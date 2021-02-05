@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
 import './DateCarousel.css'
 import {days} from "../../../utils/dateDays";
+import arrowLeft from './arrow-left.svg'
+import arrowRight from './arrow_right.svg'
 
 export interface DateCarouselProps {
     dayDate: Date,
@@ -43,32 +45,36 @@ const DateCarousel = ({dayDate, updateDayDate, dayNumber, updateDayNumber}: Date
     }, [dayDate])
 
     return <div className={'sidebar-date'}>
-        {
-            days.map((day, index) =>
-                <div
-                    key={`${day + String(index)}`}
-                    className={'date-item'}>
-                     <span className={`item-name`}>
+            <span
+                onClick={() => updateDayDate(prevState =>
+                    new Date(prevState.setDate(prevState.getDate() - 7)))}
+                className="date-prev"
+            />
+        <div className="date-carousel">
+            {
+                days.map((day, index) =>
+                    <div
+                        key={`${day + String(index)}`}
+                        className={'date-item'}>
+                        <span className={`item-name`}>
                          {day}
-                     </span>
-                    <span
-                        onClick={() => {updateDayNumber(index)}}
-                        className={`item-number`}>
+                         </span>
+                        <span
+                            onClick={() => {
+                                updateDayNumber(index)
+                            }}
+                            className={`item-number`}>
                         {carousel[index]}
                     </span>
-                </div>
-            )
-        }
+                    </div>
+                )
+            }
+        </div>
         <span
-            onClick={() => updateDayDate(prevState => new Date(prevState.setDate(prevState.getDate() - 7)))}
-            className="date-prev">
-            PREV WEEK
-        </span>
-        <span
-            onClick={() => updateDayDate(prevState => new Date(prevState.setDate(prevState.getDate() + 7)))}
-            className="date-next">
-            NEXT WEEK
-        </span>
+            onClick={() => updateDayDate(prevState =>
+                new Date(prevState.setDate(prevState.getDate() + 7)))}
+            className="date-next"
+        />
     </div>
 }
 

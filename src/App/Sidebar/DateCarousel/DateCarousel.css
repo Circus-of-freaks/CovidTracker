@@ -1,4 +1,11 @@
 .sidebar-date {
+    margin: 0 -50px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: end;
+}
+
+.date-carousel {
     display: grid;
     gap: 30px;
     grid-template-columns: repeat(7, 1fr);
@@ -10,7 +17,6 @@
     align-items: center;
     gap: 5px;
     grid-template-rows: 1fr 1fr;
-    padding: 10px;
     width: 40px;
 }
 
@@ -18,6 +24,8 @@
     font-size: 24px;
     font-weight: bold;
 }
+
+
 .item-number {
     display: flex;
     width: 40px;
@@ -27,8 +35,25 @@
     font-size: 20px;
     border: 1px solid yellow;
     border-radius: 70px;
+    background-color: #514747;
 }
 
 .date-prev, .date-next {
+    width: 20px;
+    height: 20px;
+    display: flex;
     cursor: pointer;
+    justify-content: center;
+    align-items: end;
+    padding: 0 20px;
+    margin: 0 10px 10px 10px;
+    border: 1px dashed gray;
+}
+
+.date-next {
+    background: url(arrow_right.svg) no-repeat center;
+}
+
+.date-prev {
+    background: url(arrow-left.svg) no-repeat center;
 }
