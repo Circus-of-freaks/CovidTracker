@@ -3,17 +3,26 @@ import './Sidebar.css'
 import DateCarousel from "./DateCarousel/DateCarousel";
 import ContryStat from "./CountryStat/CountryStat";
 
-const SideBar : React.FC = () => {
-    const [dayCount, setDayCount] = useState(0)
+const SideBar: React.FC = () => {
+    const date = new Date();
+    const [dayDate, setDayDate] = useState(date)
+    const [dayNumber, setDayNumber] = useState(date.getDay())
 
     React.useEffect(() => {
-        console.log(`CHANGED: ${dayCount}`)
-    }, [dayCount])
+        console.log(`CHANGED: ${dayNumber}`)
+    }, [dayNumber])
 
     return <div className={'sidebar'}>
         <h2 className={'sidebar-header'}>Cases Info</h2>
-        <DateCarousel updateDayNumber={setDayCount}/>
-        <ContryStat/>
+        <DateCarousel
+            dayDate={dayDate}
+            updateDayDate={setDayDate}
+            dayNumber={dayNumber}
+            updateDayNumber={setDayNumber}
+        />
+        <ContryStat
+            dayNumber={dayNumber}
+        />
     </div>
 }
 
