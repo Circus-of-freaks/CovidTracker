@@ -3,10 +3,11 @@ import './Sidebar.css'
 import DateCarousel from "./DateCarousel/DateCarousel";
 import ContryStat from "./CountryStat/CountryStat";
 
+const date = new Date();
+const dayNumber = date.getDay();
+
 const SideBar: React.FC = () => {
-    const date = new Date();
     const [dayDate, setDayDate] = useState<Date>(date);
-    const [dayNumber, setDayNumber] = useState<number>(date.getDay());
     const [pickerDay, setPickerDay] = useState<number>(date.getDay());
 
     return <div className={'sidebar'}>

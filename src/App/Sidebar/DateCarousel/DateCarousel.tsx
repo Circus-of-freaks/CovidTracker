@@ -38,36 +38,39 @@ const DateCarousel = ({dayDate, updateDayDate, pickerDay, setPickerDay, dayNumbe
         setCarouselDays()
     }, [dayDate, pickerDay])
 
+    const nextWeek = (): void => {
+        updateDayDate(prevState => new Date(prevState.setDate(prevState.getDate() + 7)))
+    }
+
+    const prevWeek = (): void => {
+        updateDayDate(prevState => new Date(prevState.setDate(prevState.getDate() - 7)))
+    }
+
+    const pickDay = (index: number): void => {
+        setPickerDay(index)
+        setSelectedNumber(index)
+    }
+
     return <div className={'sidebar-date'}>
         <div className="carousel-days">
             {days.map((dayItem, index) =>
-                <span
-                    key={`dayItem_${index}`}
-                    className={'days-dayName'}>
+                <span key={`dayItem_${index}`} className={'days-dayName'}>
                     {dayItem}
                 </span>)}
         </div>
         <div className="date-week">
-            <span
-                onClick={() => updateDayDate(prevState =>
-                    new Date(prevState.setDate(prevState.getDate() - 7)))}
-                className={'week-prev'}/>
+            <span onClick={() => prevWeek()} className={'week-prev'}/>
             <div className="week-numbers">
                 {carousel.map((carouselItem, index) =>
                     <span
                         key={`numberItem_${index}`}
-                        onClick={() => {
-                            setPickerDay(index)
-                            setSelectedNumber(index)
-                        }}
-                        className={`numbers-dayNumber ${index === selectedNumber ? 'active' : ''}`}>
+                        onClick={() => pickDay(index)}
+                        className={`numbers-dayNumber ${index === selectedNumber ? 'active' : ''}`}
+                    >
                         {carouselItem}
                     </span>)}
             </div>
-            <span
-                onClick={() => updateDayDate(prevState =>
-                    new Date(prevState.setDate(prevState.getDate() + 7)))}
-                className={'week-next'}/>
+            <span onClick={() => nextWeek()} className={'week-next'}/>
         </div>
     </div>
 }

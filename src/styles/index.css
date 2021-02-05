@@ -37,7 +37,7 @@ body {
   sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: black;
+  background-color: #282B2E;
 }
 
 /* Remove list styles on ul, ol elements with a class attribute */
