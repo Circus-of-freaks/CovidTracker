@@ -1,15 +1,13 @@
 import React from 'react';
 import './App.css';
 import SideBar from './Sidebar/Sidebar';
+import Main from './Main/Main';
 
 function App() {
     return (
       <div className="App">
-        <header className="App-header">
-          CovidTracker
-        </header>
         <main className="App-main">
-          OTHER
+          <Main />
           <SideBar />
         </main>
       </div>

@@ -1,0 +1,8 @@
+.header {
+    grid-area: header;
+}
+
+.header__description {
+    margin: 10px 0;
+    color: var(--gray);
+}
