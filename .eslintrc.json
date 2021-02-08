@@ -14,7 +14,8 @@
         },
         "ecmaVersion": 2020,
         "sourceType": "module",
-        "project": ["tsconfig.json"]
+        "project": ["tsconfig.json"],
+        "tsconfigRootDir": "./"
     },
     "plugins": [
         "react",
@@ -61,7 +62,13 @@
         }]
     },
     "settings": {
+        "import/parsers": {
+            "@typescript-eslint/parser": [".ts", ".tsx"]
+        },
         "import/resolver": {
+            "typescript": {
+                "alwaysTryTypes": true
+            },
             "node": {
                 "extensions": [
                     ".js",

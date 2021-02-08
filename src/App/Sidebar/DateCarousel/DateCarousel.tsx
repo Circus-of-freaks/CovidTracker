@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './DateCarousel.css';
-import { days } from '../../../utils/dateDays';
+import { days } from '@utils/dateDays';
 
 export interface DateCarouselProps {
     dayDate: Date,

@@ -1,6 +1,6 @@
 import React from 'react';
 import './Stat.css';
-import StatCard from '../StatCard/StatCard';
+import StatCard from '@StatCard/StatCard';
 
 function Stat() {
     return (

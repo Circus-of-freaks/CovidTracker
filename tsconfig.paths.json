@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@App/*": ["src/App/*"],
+      "@styles/*": ["src/styles/*"],
+      "@utils/*": ["src/utils/*"],
+      "@Main/*": ["src/App/Main/*"],
+      "@Sidebar/*": ["src/App/Sidebar/*"],
+      "@Header/*": ["src/App/Main/Header/*"],
+      "@Stat/*": ["src/App/Main/Stat/*"],
+      "@StatCard/*": ["src/App/Main/StatCard/*"],
+      "@CountryStat/*": ["src/App/Sidebar/CountryStat/*"],
+      "@DateCarousel/*": ["src/App/Sidebar/DateCarousel/*"]
+    }
+  }
+}
