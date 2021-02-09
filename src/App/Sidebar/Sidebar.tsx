@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Sidebar.css';
-import DateCarousel from './DateCarousel/DateCarousel';
-import CountryStat from './CountryStat/CountryStat';
+import DateCarousel from '@DateCarousel/DateCarousel';
+import CountryStat from '@CountryStat/CountryStat';
 
 const date = new Date();
 const dayNumber = date.getDay();

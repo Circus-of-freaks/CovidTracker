@@ -2,6 +2,7 @@
     background-color: #1B1C1F;
     padding: 0 50px;
     display: grid;
+    height: min-content;
 }
 
 .sidebar-header {

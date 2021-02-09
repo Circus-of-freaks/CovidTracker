@@ -38,6 +38,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #282B2E;
+  height: 100%;
 }
 
 /* Remove list styles on ul, ol elements with a class attribute */
@@ -78,4 +79,15 @@ select {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+
+#root {
+  height: 100%;
+  --gray: #9a9faa;
+  --yelow: #f5c778
+}
+
+html {
+  height: 100%;
 }
