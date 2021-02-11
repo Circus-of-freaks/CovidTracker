@@ -1,0 +1,15 @@
+.app {
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: 60px 100% 300px;
+  color: white;
+  height: 100%;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 0.9fr 0.1fr;
+  height: 100%;
+}
+
+/*# sourceMappingURL=App.module.css.map */

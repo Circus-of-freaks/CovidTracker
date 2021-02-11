@@ -11,7 +11,8 @@
       "@Stat/*": ["src/App/Main/Stat/*"],
       "@StatCard/*": ["src/App/Main/StatCard/*"],
       "@CountryStat/*": ["src/App/Sidebar/CountryStat/*"],
-      "@DateCarousel/*": ["src/App/Sidebar/DateCarousel/*"]
+      "@DateCarousel/*": ["src/App/Sidebar/DateCarousel/*"],
+      "@Config/*": ["src/config/*"]
     }
   }
 }

@@ -1,0 +1,32 @@
+nav {
+  display: grid;
+  grid-auto-flow: row;
+  justify-content: center;
+}
+
+.icon, .warning, .search {
+  width: 50px;
+  height: 50px;
+}
+
+.special {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.search {
+  background: url("./icons/search-icon--gray.svg") no-repeat center;
+}
+.search:hover {
+  background: url("./icons/search-icon.svg") no-repeat center;
+}
+
+.warning {
+  background: url("./icons/warning-icon--gray.svg") no-repeat center;
+}
+.warning:hover {
+  background: url("./icons/warning-icon.svg") no-repeat center;
+}
+
+/*# sourceMappingURL=Nav.module.css.map */

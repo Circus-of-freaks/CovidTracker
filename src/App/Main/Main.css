@@ -2,8 +2,7 @@
     display: grid;
     grid-template-rows: 100px 100px minmax(100px, auto) 1fr 100px;
     grid-template-columns: 100px 1fr 100px;
-    grid-template-areas: ". . ."
-                         ". header ."
+    grid-template-areas: ". header ."
                          ". stat ."
                          ". map ."
                          ". . .";
