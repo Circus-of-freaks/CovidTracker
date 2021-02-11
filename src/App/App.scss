@@ -1,0 +1,10 @@
+.App {
+  color: white;
+  height: 100%;
+
+  &-main {
+    display: grid;
+    grid-template-columns: 0.9fr 0.1fr;
+    height: 100%;
+  }
+}

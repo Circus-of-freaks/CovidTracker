@@ -1,6 +1,6 @@
 import React from 'react';
 import './Stat.css';
-import StatCard from '@StatCard/StatCard';
+import StatCard from '@Stat/StatCard/StatCard';
 
 function Stat() {
     return (
@@ -24,11 +24,6 @@ function Stat() {
           title="Вылечилось"
           number={100}
           newCases={10}
-        />
-        <StatCard
-          title="Страны"
-          number={90}
-          newCases={1}
         />
       </div>
     );

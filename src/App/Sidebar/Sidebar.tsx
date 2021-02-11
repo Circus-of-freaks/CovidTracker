@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './Sidebar.css';
 import DateCarousel from '@DateCarousel/DateCarousel';
 import CountryStat from '@CountryStat/CountryStat';
 
@@ -12,7 +11,7 @@ const SideBar: React.FC = () => {
 
     return (
       <div className="sidebar">
-        <h2 className="sidebar-header">Cases Info</h2>
+        <h2 className="tittle">Cases Info</h2>
         <DateCarousel
           dayDate={dayDate}
           updateDayDate={setDayDate}

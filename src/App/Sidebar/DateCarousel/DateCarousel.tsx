@@ -1,24 +1,24 @@
 import React, { useState } from 'react';
-import './DateCarousel.css';
 import { days } from '@utils/dateDays';
+import CarouselItem from '@DateCarousel/CarouselItem/CarouselItem';
+import styles from './DateCarousel.module.scss';
 
 export interface DateCarouselProps {
     dayDate: Date,
-    updateDayDate: React.Dispatch<React.SetStateAction<Date>>,
+    updateDayDate(d: Date): void,
     pickerDay: number,
-    setPickerDay: React.Dispatch<React.SetStateAction<number>>,
+    setPickerDay(n: number): void,
     dayNumber: number
 }
 
 const DateCarousel = ({
     dayDate,
     updateDayDate,
-    pickerDay,
     setPickerDay,
     dayNumber,
 }: DateCarouselProps) => {
     const [carousel, setCarousel] = useState<number[]>([]);
-    const [selectedNumber, setSelectedNumber] = useState<number>(0);
+    const [selectedNumber, setSelectedNumber] = useState<number>(dayDate.getDay() - 1);
 
     React.useEffect(() => {
         const setCarouselDays = () => {
@@ -42,14 +42,14 @@ const DateCarousel = ({
         };
 
         setCarouselDays();
-    }, [dayDate, pickerDay]);
+    }, [dayDate]);
 
     const nextWeek = (): void => {
-        updateDayDate((prevState) => new Date(prevState.setDate(prevState.getDate() + 7)));
+        updateDayDate(new Date(dayDate.setDate(dayDate.getDate() + 7)));
     };
 
     const prevWeek = (): void => {
-        updateDayDate((prevState) => new Date(prevState.setDate(prevState.getDate() - 7)));
+        updateDayDate(new Date(dayDate.setDate(dayDate.getDate() - 7)));
     };
 
     const pickDay = (index: number): void => {
@@ -58,36 +58,27 @@ const DateCarousel = ({
     };
 
     return (
-      <div className="sidebar-date">
-        <div className="carousel-days">
-          {days.map((dayItem, index) => (
-              // eslint-disable-next-line react/no-array-index-key
-            <span key={`dayItem_${index}`} className="days-dayName">
+      <div className={styles.date}>
+        <div className={styles.carousel}>
+          {days.map((dayItem) => (
+            <span key={dayItem} className={styles.dayName}>
               {dayItem}
             </span>
               ))}
         </div>
-        <div className="date-week">
-          {/* eslint-disable-next-line max-len */}
-          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
-          <span onClick={() => prevWeek()} className="week-prev" />
-          <div className="week-numbers">
+        <div className={styles.week}>
+          <button type="button" onClick={prevWeek} className={styles.prevWeek} />
+          <div className={styles.numbers}>
             {carousel.map((carouselItem, index) => (
-                // eslint-disable-next-line max-len
-                // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions
-              <span
-                  // eslint-disable-next-line react/no-array-index-key
-                key={`numberItem_${index}`}
-                onClick={() => pickDay(index)}
-                className={`numbers-dayNumber ${index === selectedNumber ? 'active' : ''}`}
-              >
-                {carouselItem}
-              </span>
-                  ))}
+              <CarouselItem
+                onClick={pickDay}
+                item={carouselItem}
+                index={index}
+                selectedItem={selectedNumber}
+              />
+            ))}
           </div>
-          {/* eslint-disable-next-line max-len */}
-          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
-          <span onClick={() => nextWeek()} className="week-next" />
+          <button type="button" onClick={nextWeek} className={styles.nextWeek} />
         </div>
       </div>
     );

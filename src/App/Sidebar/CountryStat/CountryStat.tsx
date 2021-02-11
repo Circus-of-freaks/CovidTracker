@@ -1,5 +1,4 @@
 import React from 'react';
-import './CountryStat.css';
 
 export interface CountryStatProps {
     dayNumber: number

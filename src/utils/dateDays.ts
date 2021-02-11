@@ -15,7 +15,7 @@ const daysInYear = {
     11: 31, // Декабрь
 };
 
-const days: String[] = ['MO', 'TU', 'WE', 'TH', 'FR', 'SA', 'SU'];
+const days: string[] = ['MO', 'TU', 'WE', 'TH', 'FR', 'SA', 'SU'];
 
 export {
     daysInYear,
