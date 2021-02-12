@@ -1,8 +1,8 @@
 .app {
   margin-top: 50px;
   display: grid;
-  grid-template-columns: 60px 100% 300px;
-  color: white;
+  grid-template-columns: 60px auto;
+  color: #ffffff;
   height: 100%;
 }
 

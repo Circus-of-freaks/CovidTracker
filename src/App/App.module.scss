@@ -1,8 +1,10 @@
+@import "../styles/variables";
+
 .app {
-  margin-top: 50px;
+  margin-top: $marginWrap;
   display: grid;
-  grid-template-columns: 60px 100% 300px;
-  color: white;
+  grid-template-columns: 60px auto;
+  color: $white;
   height: 100%;
 }
 

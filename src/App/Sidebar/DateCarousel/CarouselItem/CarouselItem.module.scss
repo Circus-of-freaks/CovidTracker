@@ -1,3 +1,5 @@
+@import "../../../../styles/variables";
+
 .dayNumber {
   cursor: pointer;
   display: flex;
@@ -13,7 +15,7 @@
 .active {
   border: 1px solid white;
   border-radius: 70px;
-  background-color: #F6C879;
-  color: #ffffff;
+  background-color: $yellow;
+  color: $white;
   font-weight: bold;
 }

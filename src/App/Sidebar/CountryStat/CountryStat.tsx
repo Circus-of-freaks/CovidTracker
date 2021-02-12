@@ -1,4 +1,5 @@
 import React from 'react';
+import Country from '@CountryStat/Country';
 
 export interface CountryStatProps {
     dayNumber: number
@@ -6,8 +7,10 @@ export interface CountryStatProps {
 
 const CountryStat = ({ dayNumber }: CountryStatProps) => (
   <div className="sidebar-countries">
-    Countries component, current dayIndex is:
+    cur day inndex :
+    {' '}
     {dayNumber}
+    <Country countryName="Russia" />
   </div>
 );
 

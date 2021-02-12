@@ -77,7 +77,7 @@
         "react/display-name": "off",
         "react/react-in-jsx-scope": "off",
         "react/jsx-closing-bracket-location": "off",
-        "jsx-a11y/no-noninteractive-element-interactions": "off",
+        "react/jsx-fragments": "off",
         "react/jsx-filename-extension": [
           2,
           {
