@@ -1,17 +1,31 @@
 import { CountryStatModel } from '@Models/CountryStatModel';
+import { CollectionT } from '@utils/collection';
 
 type CountryStatApiModel = {
   Country: string,
   Cases: number,
-  Date: string
+  Date: string,
 }
 
 const normalizeCountryStatApiModel = (
     raw: CountryStatApiModel,
 ): CountryStatModel => ({
-    сountry: raw.Country,
+    country: raw.Country,
     cases: raw.Cases,
     date: raw.Date,
 });
 
-export default normalizeCountryStatApiModel;
+const normalizeCountryStatToCollection = (
+    rawList: CountryStatApiModel[],
+): CollectionT<number, CountryStatModel> => ({
+    order: rawList.map((item, index) => index),
+    entities: rawList.reduce(
+        (acc, item, index) => ({
+            ...acc,
+            [index]: normalizeCountryStatApiModel(item),
+        }),
+        {},
+    ),
+});
+
+export default normalizeCountryStatToCollection;

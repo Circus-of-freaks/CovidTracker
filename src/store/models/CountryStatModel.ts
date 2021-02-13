@@ -1,5 +1,5 @@
 export type CountryStatModel = {
-  name: string,
-  additional: number,
-  total: number
+  country: string,
+  cases: number,
+  date: string
 }

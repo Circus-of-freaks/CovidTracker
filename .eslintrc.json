@@ -63,6 +63,7 @@
         "no-console": "warn",
         "no-redeclare": "error",
         "no-var": "error",
+        "no-underscore-dangle": "off",
         "import/default": "off",
         "import/no-named-as-default": "off",
         "no-template-curly-in-string": "error",

@@ -1,7 +1,8 @@
 import React from 'react';
-import Country from '@CountryStat/Country/Country';
 import { useLocal } from '@utils/useLocal';
 import CountryStatStore from '@Store/CountryStatStore/CountryStatStore';
+import { observer } from 'mobx-react-lite';
+import useAsync from '@utils/useAsync';
 
 export interface CountryStatProps {
     dayNumber: number
@@ -9,18 +10,14 @@ export interface CountryStatProps {
 
 const CountryStat : React.FC = () => {
     const store = useLocal(() => new CountryStatStore());
-
+    useAsync(store.fetch, []);
+    // eslint-disable-next-line no-unused-expressions
+    console.log(store.data);
     return (
       <div className="sidebar-countries">
-        {store.data.map((country) => (
-          <Country
-            countryName={country.name}
-            additional={country.additional}
-            total={country.total}
-            />
-        ))}
+        <p>keke</p>
       </div>
     );
 };
 
-export default CountryStat;
+export default observer(CountryStat);
