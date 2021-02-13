@@ -17,7 +17,10 @@ const daysInYear = {
 
 const days: string[] = ['MO', 'TU', 'WE', 'TH', 'FR', 'SA', 'SU'];
 
+const setNextDay = (d: Date) : number => d.setDate(new Date().getDate() + 1);
+
 export {
     daysInYear,
     days,
+    setNextDay,
 };

@@ -15,7 +15,9 @@
       "@Home/*": ["src/App/Home/*"],
       "@Nav/*": ["src/App/Home/Nav/*"],
       "@Search/*": ["src/App/Search/*"],
-      "@Config/*": ["src/config/*"]
+      "@Config/*": ["src/config/*"],
+      "@Models/*": ["src/store/models/*"],
+      "@Store/*": ["src/store/*"]
     }
   }
 }

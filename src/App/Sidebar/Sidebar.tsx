@@ -19,9 +19,7 @@ const SideBar: React.FC = () => {
           setPickerDay={setPickerDay}
           dayNumber={dayNumber}
         />
-        <CountryStat
-          dayNumber={pickerDay}
-        />
+        <CountryStat />
       </div>
     );
 };
