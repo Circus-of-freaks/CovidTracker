@@ -1,7 +1,7 @@
 .main {
     display: grid;
-    grid-template-rows: 100px 100px minmax(100px, auto) 1fr 100px;
-    grid-template-columns: 100px 1fr 100px;
+    grid-template-rows: 100px minmax(100px, auto) 1fr 100px;
+    grid-template-columns: 50px 1fr 50px;
     grid-template-areas: ". header ."
                          ". stat ."
                          ". map ."
