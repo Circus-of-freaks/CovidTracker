@@ -2,6 +2,7 @@ import { Loader } from '@googlemaps/js-api-loader';
 import React from 'react';
 import './Map.scss';
 import { useHistory } from 'react-router-dom';
+import * as countries from '@utils/countries.json';
 import mapStyles from './MapStyles';
 
 const MAP_API_KEY = 'AIzaSyCzTCZVbwEccPX1JdZ2cMZR6I6D1bYAz7U';
@@ -11,6 +12,14 @@ const loader = new Loader({
     version: 'weekly',
     mapIds: ['1eda255439b06b05'],
 });
+
+function getSvg(confirmedCases: number): string {
+    const k = 0.0002;
+    const radius = `${(Math.log1p(k * confirmedCases)).toFixed(2)}`;
+    const diameter = `${(2 * Math.log1p(k * confirmedCases)).toFixed(2)}`;
+    const svgPart = `A ${radius} ${radius} 0 1 0 0`;
+    return `m 0 0 ${svgPart} ${diameter} ${svgPart} 0 Z`;
+}
 
 function Map() {
     const history = useHistory();
@@ -30,7 +39,8 @@ function Map() {
         });
         map.setOptions({ styles: mapStyles });
         const svgMarker = {
-            path: 'm 0 0 A 5 5 0 1 0 0 10 A 5 5 0 1 0 0 0 Z',
+            // path: 'm 0 0 A 5 5 0 1 0 0 10 A 5 5 0 1 0 0 0 Z',
+            path: getSvg(138929),
             fillColor: '#B73030',
             fillOpacity: 1,
             strokeWeight: 0,
@@ -42,7 +52,7 @@ function Map() {
 
         // eslint-disable-next-line no-undef
         const marker = new google.maps.Marker({
-            position: { lat: -25.363, lng: 131.044 },
+            position: countries['United Kingdom'],
             map,
             icon: svgMarker,
         });
