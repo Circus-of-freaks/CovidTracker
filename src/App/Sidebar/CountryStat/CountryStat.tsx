@@ -1,17 +1,23 @@
 import React from 'react';
-import Country from '@CountryStat/Country';
+import { useLocal } from '@utils/useLocal';
+import CountryStatStore from '@Store/CountryStatStore/CountryStatStore';
+import { observer } from 'mobx-react-lite';
+import useAsync from '@utils/useAsync';
 
 export interface CountryStatProps {
     dayNumber: number
 }
 
-const CountryStat = ({ dayNumber }: CountryStatProps) => (
-  <div className="sidebar-countries">
-    cur day inndex :
-    {' '}
-    {dayNumber}
-    <Country countryName="Russia" />
-  </div>
-);
+const CountryStat : React.FC = () => {
+    const store = useLocal(() => new CountryStatStore());
+    useAsync(store.fetch, []);
+    // eslint-disable-next-line no-unused-expressions
+    console.log(store.data);
+    return (
+      <div className="sidebar-countries">
+        <p>keke</p>
+      </div>
+    );
+};
 
-export default CountryStat;
+export default observer(CountryStat);

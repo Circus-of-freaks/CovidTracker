@@ -4,6 +4,7 @@ import './styles/index.css';
 import App from '@App/App';
 import { BrowserRouter } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
+import '@utils/initMobX';
 
 ReactDOM.render(
   <React.StrictMode>
