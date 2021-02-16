@@ -4,54 +4,44 @@ import {
 } from 'mobx';
 import Meta from '@utils/meta';
 import requestCountryStat from '@Store/CountryStatStore/requestCountryStat';
-import { CollectionT } from '@utils/collection';
 import log from '@utils/log';
 
 export default class CountryStatStore {
-_date: CollectionT<number, CountryStatModel> = {
-    order: [],
-    entities: {},
-};
+    _data: CountryStatModel[] | undefined;
 
-  meta: Meta = Meta.initial;
+    meta: Meta = Meta.initial;
 
-  constructor() {
-      makeObservable(this, {
-          _date: observable,
-          meta: observable,
-          fetch: action.bound,
-          data: computed,
-      });
-  }
+    constructor() {
+        makeObservable(this, {
+            _data: observable,
+            meta: observable,
+            fetch: action.bound,
+            data: computed,
+        });
+    }
 
-  async fetch(): Promise<null> {
-      if (this.meta === Meta.loading || this.meta === Meta.success) {
-          return null;
-      }
+    async fetch(): Promise<void> {
+        if (this.meta === Meta.loading || this.meta === Meta.success) {
+            return;
+        }
 
-      this.meta = Meta.loading;
-      this._date = {
-          order: [],
-          entities: {},
-      };
+        this.meta = Meta.loading;
+        this._data = [];
 
-      const { isError, data } = await requestCountryStat('russia');
-      if (isError) {
-          this.meta = Meta.error;
-          return null;
-      }
+        const { isError, data } = await requestCountryStat('russia');
+        if (isError) {
+            this.meta = Meta.error;
+            return;
+        }
 
-      runInAction(() => {
-          this.meta = Meta.success;
-          this._date = data;
-      });
+        runInAction(() => {
+            this.meta = Meta.success;
+            this._data = data;
+        });
+    }
 
-      return null;
-  }
-
-  get data(): CountryStatModel[] {
-      log('get data', this._date);
-
-      return this._date.order.map((id) => this._date.entities[id]);
-  }
+    get data() {
+        log('get data', this._data);
+        return this._data;
+    }
 }

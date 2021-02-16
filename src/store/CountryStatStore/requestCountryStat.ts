@@ -1,24 +1,20 @@
 import axios from 'axios';
 import apiUrls from '@Config/apiUrls';
 import ApiResponse from '@utils/apiTypes';
-import { CountryStatModel } from '@Models/CountryStatModel';
 import log from '@utils/log';
-import normalizeCountryStatToCollection from '@Models/CountryStatApi';
-import { CollectionT } from '@utils/collection';
+import { CountryStatModel } from '@Models/CountryStatModel';
+import normaliseCountryStatApiModel from '@Models/CountryStatApi';
 
 const requestCountryStat = async (
     country: string,
-): Promise<ApiResponse<CollectionT<number, CountryStatModel>>> => {
+): Promise<ApiResponse<CountryStatModel>> => {
     try {
         const response = await axios(
-            apiUrls
-                .total
-                .byCountry
-                .ByCountryConfirmed(country, new Date()),
+            apiUrls.country.lastTwo(country, new Date()),
         );
         return {
             isError: false,
-            data: normalizeCountryStatToCollection(response.data),
+            data: response.data.map((item: any) => normaliseCountryStatApiModel(item)),
         };
     } catch (e) {
         log(e);

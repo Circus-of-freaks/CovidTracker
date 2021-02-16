@@ -11,8 +11,9 @@ export interface CountryStatProps {
 const CountryStat : React.FC = () => {
     const store = useLocal(() => new CountryStatStore());
     useAsync(store.fetch, []);
-    // eslint-disable-next-line no-unused-expressions
-    console.log(store.data);
+    if (store._data !== undefined) {
+        store._data.map((item) => console.log(item));
+    }
     return (
       <div className="sidebar-countries">
         <p>keke</p>

@@ -1,5 +1,7 @@
 export type CountryStatModel = {
-  country: string,
-  cases: number,
-  date: string
+  Country: string,
+  Date: string,
+  Confirmed: string
+  Recovered: string,
+  Deaths: string,
 }
