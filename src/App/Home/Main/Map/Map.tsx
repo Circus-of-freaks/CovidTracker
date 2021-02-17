@@ -3,6 +3,11 @@ import React from 'react';
 import './Map.scss';
 import { useHistory } from 'react-router-dom';
 import * as countries from '@utils/countries.json';
+// import { useLocalStore } from '@utils/useLocal';
+import GlobalStatStore from '@Store/GlobalStatStore/GlobalStatStore';
+import { useLocal } from '@utils/useLocal';
+// import useAsync from '@utils/useAsync';
+import { observer } from 'mobx-react-lite';
 import mapStyles from './MapStyles';
 
 const MAP_API_KEY = 'AIzaSyCzTCZVbwEccPX1JdZ2cMZR6I6D1bYAz7U';
@@ -22,6 +27,8 @@ function getSvg(confirmedCases: number): string {
 }
 
 function Map() {
+    const store = useLocal(() => new GlobalStatStore());
+    store.fetch();
     const history = useHistory();
     loader.load().then(() => {
         // eslint-disable-next-line no-undef
@@ -39,8 +46,7 @@ function Map() {
         });
         map.setOptions({ styles: mapStyles });
         const svgMarker = {
-            // path: 'm 0 0 A 5 5 0 1 0 0 10 A 5 5 0 1 0 0 0 Z',
-            path: getSvg(138929),
+            path: getSvg(10038929),
             fillColor: '#B73030',
             fillOpacity: 1,
             strokeWeight: 0,
@@ -52,7 +58,7 @@ function Map() {
 
         // eslint-disable-next-line no-undef
         const marker = new google.maps.Marker({
-            position: countries['United Kingdom'],
+            position: countries.GB.coordinates,
             map,
             icon: svgMarker,
         });
@@ -66,4 +72,4 @@ function Map() {
     return <div className="map" id="map" />;
 }
 
-export default Map;
+export default observer(Map);
