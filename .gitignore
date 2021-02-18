@@ -10,7 +10,7 @@
 logs
 **/*.backup.*
 **/*.back.*
-
+src/*.map
 node_modules
 bower_components
 

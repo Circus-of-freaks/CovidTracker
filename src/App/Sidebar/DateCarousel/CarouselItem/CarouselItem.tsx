@@ -1,4 +1,3 @@
-import React, { useCallback } from 'react';
 import styles from './CarouselItem.module.scss';
 
 export interface CarouselItemProps {
@@ -11,7 +10,7 @@ export interface CarouselItemProps {
 const CarouselItem = ({
     onClick, item, index, selectedItem,
 } : CarouselItemProps) => {
-    const handleClick = useCallback(() => { onClick(index); }, [item, onClick]);
+    const handleClick = () => onClick(index);
 
     return (
       <button

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { days } from '@utils/dateDays';
-import CarouselItem from '@DateCarousel/CarouselItem/CarouselItem';
+import CarouselItem from '@App/Sidebar/DateCarousel/CarouselItem';
 import styles from './DateCarousel.module.scss';
 
 export interface DateCarouselProps {
@@ -21,27 +21,23 @@ const DateCarousel = ({
     const [selectedNumber, setSelectedNumber] = useState<number>(dayDate.getDay() - 1);
 
     React.useEffect(() => {
-        const setCarouselDays = () => {
-            const tempArr: number[] = [];
-            const dayIndex: number = dayNumber - 1;
-            const tempDate: Date = new Date(dayDate);
+        const tempArr: number[] = [];
+        const dayIndex: number = dayNumber - 1;
+        const tempDate: Date = new Date(dayDate);
 
-            for (let i = dayIndex; i >= 0; i--) {
-                tempArr[i] = tempDate.getDate();
-                tempDate.setDate(tempDate.getDate() - 1);
-            }
+        for (let i = dayIndex; i >= 0; i--) {
+            tempArr[i] = tempDate.getDate();
+            tempDate.setDate(tempDate.getDate() - 1);
+        }
 
-            tempDate.setDate(dayDate.getDate());
+        tempDate.setDate(dayDate.getDate());
 
-            for (let i = dayIndex; i < 7; i++) {
-                tempArr[i] = tempDate.getDate();
-                tempDate.setDate(tempDate.getDate() + 1);
-            }
+        for (let i = dayIndex; i < 7; i++) {
+            tempArr[i] = tempDate.getDate();
+            tempDate.setDate(tempDate.getDate() + 1);
+        }
 
-            setCarousel(tempArr);
-        };
-
-        setCarouselDays();
+        setCarousel(tempArr);
     }, [dayDate]);
 
     const nextWeek = (): void => {

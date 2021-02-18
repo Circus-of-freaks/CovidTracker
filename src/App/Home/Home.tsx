@@ -1,6 +1,6 @@
 import React from 'react';
-import SideBar from '@Sidebar/Sidebar';
-import Main from '@App/Home/Main/Main';
+import SideBar from '@App/Sidebar';
+import Main from '@App/Home/Main';
 
 function Home() {
     return (

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import DateCarousel from '@DateCarousel/DateCarousel';
-import CountryStat from '@CountryStat/CountryStat';
+import DateCarousel from '@App/Sidebar/DateCarousel';
+import CountryStat from '@App/Sidebar/CountryStat';
 
 const date = new Date();
 const dayNumber = date.getDay();

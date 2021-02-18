@@ -29,12 +29,12 @@ export default class CountryStatStore {
         this._data = [];
 
         const { isError, data } = await requestCountryStat('russia');
-        if (isError) {
-            this.meta = Meta.error;
-            return;
-        }
-
         runInAction(() => {
+            if (isError) {
+                this.meta = Meta.error;
+                return;
+            }
+
             this.meta = Meta.success;
             this._data = data;
         });
