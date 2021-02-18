@@ -1,5 +1,4 @@
 import axios from 'axios';
-// eslint-disable-next-line import/no-named-as-default-member
 import apiUrls from '@Config/apiUrls';
 import ApiResponse from '@utils/apiTypes';
 import log from '@utils/log';
