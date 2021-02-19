@@ -1,13 +1,12 @@
-import { Loader } from '@googlemaps/js-api-loader';
+/* global google */
 import React from 'react';
-import './Map.scss';
 import { useHistory } from 'react-router-dom';
-import * as countries from '@utils/countries.json';
-// import { useLocalStore } from '@utils/useLocal';
+import countriesJson from '@utils/countries.json';
 import GlobalStatStore from '@Store/GlobalStatStore/GlobalStatStore';
-import { useLocal } from '@utils/useLocal';
-// import useAsync from '@utils/useAsync';
 import { observer } from 'mobx-react-lite';
+import { Loader } from '@googlemaps/js-api-loader';
+import { useLocal } from '@utils/useLocal';
+import styles from './Map.module.scss';
 import mapStyles from './MapStyles';
 
 const MAP_API_KEY = 'AIzaSyCzTCZVbwEccPX1JdZ2cMZR6I6D1bYAz7U';
@@ -18,58 +17,75 @@ const loader = new Loader({
     mapIds: ['1eda255439b06b05'],
 });
 
+type Countries = Record<string, {
+    country: string,
+    coordinates: {
+        lat: number,
+        lng: number,
+    }
+}>
+
 function getSvg(confirmedCases: number): string {
     const k = 0.0002;
-    const radius = `${(Math.log1p(k * confirmedCases)).toFixed(2)}`;
-    const diameter = `${(2 * Math.log1p(k * confirmedCases)).toFixed(2)}`;
+    const radius = (Math.log1p(k * confirmedCases)).toFixed(2);
+    const diameter = `${Number(radius) * 2}`;
     const svgPart = `A ${radius} ${radius} 0 1 0 0`;
     return `m 0 0 ${svgPart} ${diameter} ${svgPart} 0 Z`;
 }
 
 function Map() {
     const store = useLocal(() => new GlobalStatStore());
-    store.fetch();
+    const storePromise = store.fetch();
+    const countries = countriesJson as Countries;
     const history = useHistory();
+    const markersMap: Record<string, google.maps.Marker> = {};
+
+    storePromise.then(() => {
+        for (const [iso, info] of Object.entries(store.data.countries)) {
+            const svgMarker = {
+                path: getSvg(info.totalConfirmed),
+                fillColor: '#B73030',
+                fillOpacity: 1,
+                strokeWeight: 0,
+                rotation: 0,
+                scale: 2,
+                anchor: new google.maps.Point(0, 2.5),
+            };
+            if (countries[iso]) {
+                markersMap[iso] = new google.maps.Marker({
+                    position: countries[iso].coordinates,
+                    icon: svgMarker,
+                });
+
+                markersMap[iso].addListener('click', () => {
+                    history.push(`/${countries[iso].country}`);
+                });
+            }
+        }
+    });
+
     loader.load().then(() => {
-        // eslint-disable-next-line no-undef
         const map = new google.maps.Map(document.getElementById('map') as HTMLElement, {
             center: { lat: 44.177751, lng: 10.757718 },
             zoom: 2,
-            disableDefaultUI: true,
-            scrollwheel: false,
-            draggable: false,
-            zoomControl: false,
-            streetViewControl: false,
-            mapTypeControl: false,
-            disableDoubleClickZoom: true,
-            draggableCursor: 'default',
+            // disableDefaultUI: true,
+            // scrollwheel: false,
+            // draggable: false,
+            // zoomControl: false,
+            // streetViewControl: false,
+            // mapTypeControl: false,
+            // disableDoubleClickZoom: true,
+            // draggableCursor: 'default',
         });
         map.setOptions({ styles: mapStyles });
-        const svgMarker = {
-            path: getSvg(10038929),
-            fillColor: '#B73030',
-            fillOpacity: 1,
-            strokeWeight: 0,
-            rotation: 0,
-            scale: 2,
-            // eslint-disable-next-line no-undef
-            anchor: new google.maps.Point(0, 5),
-        };
-
-        // eslint-disable-next-line no-undef
-        const marker = new google.maps.Marker({
-            position: countries.GB.coordinates,
-            map,
-            icon: svgMarker,
-        });
-        marker.setMap(map);
-
-        marker.addListener('click', () => {
-            history.push('/home');
+        storePromise.then(() => {
+            for (const [, data] of Object.entries(markersMap)) {
+                data.setMap(map);
+            }
         });
     });
 
-    return <div className="map" id="map" />;
+    return <div className={styles.map} id="map" />;
 }
 
 export default observer(Map);

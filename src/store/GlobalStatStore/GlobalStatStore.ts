@@ -6,7 +6,7 @@ import log from '@utils/log';
 import { GlobalStatModel } from '@Models/GlobalStat/GlobalStatModel';
 import requestGlobalStat from '@Store/GlobalStatStore/requestGlobalStat';
 
-export default class GlobalStatStore {
+class GlobalStatStore {
     _date = <GlobalStatModel>{};
 
     meta: Meta = Meta.initial;
@@ -46,3 +46,5 @@ export default class GlobalStatStore {
         return this._date;
     }
 }
+
+export default GlobalStatStore;
