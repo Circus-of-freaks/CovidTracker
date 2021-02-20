@@ -3,7 +3,19 @@
   max-width: 1030px;
   min-height: 670px;
   justify-self: center;
-  width: -moz-available;          /* WebKit игнор. */
-  width: -webkit-fill-available;  /* Mozilla игнор. */
+  width: -moz-available;
+  width: -webkit-fill-available;
   outline: none;
+}
+
+.map__info {
+  color: black;
+}
+
+.map__infoNumber {
+  color: #B73030;
+}
+
+.map__infoContainer {
+  display: flex;
 }
