@@ -1,5 +1,6 @@
 import caseStatus from '@utils/caseStatus';
 import { DateToISO, getNextISO } from '@utils/dateDays';
+import PREV_DAY from '@Config/consts';
 
 const covidApi = (endpoint: string): string => `https://api.covid19api.com/${endpoint}`;
 
@@ -8,7 +9,7 @@ function totalByCountryApi(
     time: Date,
     status: string,
 ) : string {
-    return covidApi(`total/country/${country}/status/${status}?from=${getNextISO(time, -2)}&to=${DateToISO(time)}`);
+    return covidApi(`total/country/${country}/status/${status}?from=${getNextISO(time, PREV_DAY)}&to=${DateToISO(time)}`);
 }
 
 const apiUrls = {
@@ -16,7 +17,7 @@ const apiUrls = {
         lastTwo: (
             country: string,
             time: Date,
-        ): string => covidApi(`country/${country}?from=${DateToISO(time)}&to=${getNextISO(time, -2)}`),
+        ): string => covidApi(`country/${country}?from=${getNextISO(time, PREV_DAY)}&to=${DateToISO(time)}`),
     },
     total: {
         byCountry: {
