@@ -1,0 +1,29 @@
+.stat-card {
+  display: grid;
+  grid-template-areas: "image title new" "image number new";
+  height: min-content;
+  width: fit-content;
+  margin: 10px 0;
+}
+.stat-card__image {
+  grid-area: image;
+  height: 50px;
+  width: 50px;
+}
+.stat-card__title {
+  color: #9a9faa;
+  margin-left: 15px;
+}
+.stat-card__number {
+  margin-left: 10px;
+  align-self: end;
+}
+.stat-card__new-cases {
+  grid-area: new;
+  padding-top: 10px;
+  color: #f5c778;
+  margin-left: 5px;
+  font-weight: 500;
+}
+
+/*# sourceMappingURL=StatCard.css.map */

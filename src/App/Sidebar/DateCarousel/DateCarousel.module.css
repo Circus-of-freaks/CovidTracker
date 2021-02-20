@@ -1,0 +1,63 @@
+.date {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+}
+
+.carousel {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 20px;
+  align-items: center;
+  justify-items: center;
+}
+
+.dayName, .numbers-dayNumber {
+  display: flex;
+  width: 30px;
+  height: 30px;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.days-dayName {
+  font-size: 24px;
+}
+
+.week {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 0 -30px;
+  padding: 5px 0;
+}
+
+.numbers {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(7, 1fr);
+  background-color: gray;
+  border-radius: 70px;
+  padding: 0 10px;
+}
+
+.nextWeek, .prevWeek {
+  cursor: pointer;
+}
+
+.nextWeek {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 5px;
+  background: url(arrow_right.svg) no-repeat center;
+}
+
+.prevWeek {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 5px;
+  background: url(arrow-left.svg) no-repeat center;
+}
+
+/*# sourceMappingURL=DateCarousel.module.css.map */
