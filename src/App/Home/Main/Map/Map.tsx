@@ -5,7 +5,6 @@ import countriesJson from '@utils/countries.json';
 import GlobalStatStore from '@Store/GlobalStatStore/GlobalStatStore';
 import { observer } from 'mobx-react-lite';
 import { Loader } from '@googlemaps/js-api-loader';
-import { useLocal } from '@utils/useLocal';
 import styles from './Map.module.scss';
 import mapStyles from './MapStyles';
 
@@ -34,7 +33,7 @@ function getSvg(confirmedCases: number): string {
 }
 
 function Map() {
-    const store = useLocal(() => new GlobalStatStore());
+    const store = new GlobalStatStore();
     const storePromise = store.fetch();
     const countries = countriesJson as Countries;
     // const history = useHistory();
