@@ -83,10 +83,12 @@ select {
 
 #root {
   height: 100%;
-  --gray: #9a9faa;
-  --yelow: #f5c778
 }
 
 html {
   height: 100%;
+}
+
+button {
+  border: none;
 }

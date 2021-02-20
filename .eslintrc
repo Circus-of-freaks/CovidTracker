@@ -1,19 +1,26 @@
 {
-  "env": {
-    "browser": true,
-    "es2021": true
-  },
+  "plugins": [
+    "import",
+    "react",
+    "@typescript-eslint"
+  ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
     },
-    "ecmaVersion": 2020,
-    "sourceType": "module",
+    "tsconfigRootDir": "./",
     "project": [
       "tsconfig.json"
-    ],
-    "tsconfigRootDir": "./"
+    ]
+  },
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true,
+    "mocha": true
   },
   "overrides": [
     {
@@ -43,12 +50,8 @@
         "*.tsx"
       ],
       "extends": [
-        "plugin:react/recommended",
-        "airbnb"
-      ],
-      "plugins": [
-        "react",
-        "@typescript-eslint"
+        "eslint:recommended",
+        "plugin:react/recommended"
       ],
       "rules": {
         "curly": [
@@ -60,12 +63,9 @@
           "single"
         ],
         "no-alert": "error",
-        "no-console": "warn",
+        "no-console": "error",
         "no-redeclare": "error",
         "no-var": "error",
-        "no-param-reassign": "off",
-        "no-restricted-syntax": "off",
-        "no-continue": "off",
         "no-underscore-dangle": "off",
         "import/default": "off",
         "import/no-named-as-default": "off",
@@ -150,8 +150,12 @@
               ".js",
               ".jsx",
               ".ts",
-              ".tsx"
+              ".tsx",
+              ".json"
             ]
+          },
+          "react": {
+            "version": "16.3"
           }
         }
       }

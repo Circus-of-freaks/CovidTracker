@@ -1,37 +1,40 @@
-import type { GlobalStatModel, TopCountries } from '@Models/GlobalStat/GlobalStatModel';
+import type {
+    GlobalStatModel,
+    TopCountries,
+} from '@Models/GlobalStat/GlobalStatModel';
 
 const TOP_COUNTRIES_NUMBER = 20;
 
 type GlobalStat = {
-    NewConfirmed: number,
-    TotalConfirmed: number,
-    NewDeaths: number,
-    TotalDeaths: number,
-    NewRecovered: number,
-    TotalRecovered: number,
-}
+  NewConfirmed: number;
+  TotalConfirmed: number;
+  NewDeaths: number;
+  TotalDeaths: number;
+  NewRecovered: number;
+  TotalRecovered: number;
+};
 
 type CountryStatApi = {
-    readonly [index: string]: string | number,
+  readonly [index: string]: string | number;
 
-    Country: string,
-    CountryCode: string,
-    TotalConfirmed: number,
-    NewConfirmed: number,
-    NewDeaths: number,
-    TotalDeaths: number,
-    NewRecovered: number,
-    TotalRecovered: number,
-}
+  Country: string;
+  CountryCode: string;
+  TotalConfirmed: number;
+  NewConfirmed: number;
+  NewDeaths: number;
+  TotalDeaths: number;
+  NewRecovered: number;
+  TotalRecovered: number;
+};
 
 export type GlobalStatApi = {
-    Global: GlobalStat,
-    Countries: CountryStatApi[],
-}
+  Global: GlobalStat;
+  Countries: CountryStatApi[];
+};
 
 function computeTopCountries(
     topCountries: TopCountries,
-    topCountriesNames:Record<string, CountryStatApi>,
+    topCountriesNames: Record<string, CountryStatApi>,
     country: CountryStatApi,
 ): void {
     for (const [name, top] of Object.entries(topCountries)) {
@@ -46,7 +49,8 @@ function computeTopCountries(
         case 'topRecovered':
             tmpProp = 'TotalRecovered';
             break;
-        default: return;
+        default:
+            return;
         }
         if (top.length < TOP_COUNTRIES_NUMBER) {
             top.push(country.CountryCode);
@@ -55,9 +59,14 @@ function computeTopCountries(
             }
             if (top.length === TOP_COUNTRIES_NUMBER) {
                 top.sort((first, second) => {
-                    if (typeof topCountriesNames[first][tmpProp] === 'number' && typeof topCountriesNames[second][tmpProp] === 'number') {
-                        return -(<number>topCountriesNames[first][tmpProp]
-                            - <number>topCountriesNames[second][tmpProp]);
+                    if (
+                        typeof topCountriesNames[first][tmpProp] === 'number'
+            && typeof topCountriesNames[second][tmpProp] === 'number'
+                    ) {
+                        return -(
+              <number>topCountriesNames[first][tmpProp]
+              - <number>topCountriesNames[second][tmpProp]
+                        );
                     }
                     return 0;
                 });
@@ -83,9 +92,7 @@ function computeTopCountries(
     }
 }
 
-export const normalizeGlobalStatApi = (
-    raw: GlobalStatApi,
-): GlobalStatModel => {
+export const normalizeGlobalStatApi = (raw: GlobalStatApi): GlobalStatModel => {
     const topCountries: TopCountries = {
         topConfirmed: [],
         topDeaths: [],
@@ -96,8 +103,12 @@ export const normalizeGlobalStatApi = (
     result.global = {
         newConfirmed: raw.Global.NewConfirmed,
         totalConfirmed: raw.Global.TotalConfirmed,
-        newActive: raw.Global.NewConfirmed - raw.Global.NewDeaths - raw.Global.NewRecovered,
-        totalActive: raw.Global.TotalConfirmed - raw.Global.TotalDeaths - raw.Global.TotalRecovered,
+        newActive:
+      raw.Global.NewConfirmed - raw.Global.NewDeaths - raw.Global.NewRecovered,
+        totalActive:
+      raw.Global.TotalConfirmed
+      - raw.Global.TotalDeaths
+      - raw.Global.TotalRecovered,
         newDeaths: raw.Global.NewDeaths,
         totalDeaths: raw.Global.TotalDeaths,
         newRecovered: raw.Global.NewRecovered,

@@ -1,8 +1,8 @@
 enum Meta {
-  initial,
-  loading,
-  error,
-  success,
+  Initial,
+  Loading,
+  Error,
+  Success,
 }
 
 export default Meta;

@@ -1,8 +1,9 @@
 import React from 'react';
+
+import Header from '@App/Home/Main/Header';
+import Map from '@App/Home/Main/Map';
+import Stat from '@App/Home/Main/Stat';
 import './Main.css';
-import Header from '@App/Home/Main/Header/Header';
-import Stat from '@App/Home/Main/Stat/Stat';
-import Map from '@Main/Map/Map';
 
 function App() {
     return (

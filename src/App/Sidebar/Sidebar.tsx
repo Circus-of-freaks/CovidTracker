@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import DateCarousel from '@DateCarousel/DateCarousel';
-import CountryStat from '@CountryStat/CountryStat';
+
+import CountryStat from '@App/Sidebar/CountryStat';
+import DateCarousel from '@App/Sidebar/DateCarousel';
 
 const date = new Date();
 const dayNumber = date.getDay();
@@ -18,7 +19,7 @@ const SideBar: React.FC = () => {
           pickerDay={pickerDay}
           setPickerDay={setPickerDay}
           dayNumber={dayNumber}
-        />
+      />
         <CountryStat />
       </div>
     );
