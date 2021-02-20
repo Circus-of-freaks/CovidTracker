@@ -1,47 +1,52 @@
-import { CountryStatModel } from '@Models/CountryStatModel';
 import {
-    action, computed, makeObservable, observable, runInAction,
+    action,
+    computed,
+    makeObservable,
+    observable,
+    runInAction,
 } from 'mobx';
-import Meta from '@utils/meta';
+
+import { CountryStatModel } from '@Models/CountryStatModel';
 import requestCountryStat from '@Store/CountryStatStore/requestCountryStat';
 import log from '@utils/log';
+import Meta from '@utils/meta';
 
 export default class CountryStatStore {
-    _data: CountryStatModel[] | undefined;
+  _data: CountryStatModel[] | undefined;
 
-    meta: Meta = Meta.initial;
+  meta: Meta = Meta.Initial;
 
-    constructor() {
-        makeObservable(this, {
-            _data: observable,
-            meta: observable,
-            fetch: action.bound,
-            data: computed,
-        });
-    }
+  constructor() {
+      makeObservable(this, {
+          _data: observable,
+          meta: observable,
+          fetch: action.bound,
+          data: computed,
+      });
+  }
 
-    async fetch(): Promise<void> {
-        if (this.meta === Meta.loading || this.meta === Meta.success) {
-            return;
-        }
+  async fetch(): Promise<void> {
+      if (this.meta === Meta.Loading || this.meta === Meta.Success) {
+          return;
+      }
 
-        this.meta = Meta.loading;
-        this._data = [];
+      this.meta = Meta.Loading;
+      this._data = [];
 
-        const { isError, data } = await requestCountryStat('russia');
-        runInAction(() => {
-            if (isError) {
-                this.meta = Meta.error;
-                return;
-            }
+      const { isError, data } = await requestCountryStat('russia');
+      runInAction(() => {
+          if (isError) {
+              this.meta = Meta.Error;
+              return;
+          }
 
-            this.meta = Meta.success;
-            this._data = data;
-        });
-    }
+          this.meta = Meta.Success;
+          this._data = data;
+      });
+  }
 
-    get data() {
-        log('get data', this._data);
-        return this._data;
-    }
+  get data() {
+      log('get data', this._data);
+      return this._data;
+  }
 }

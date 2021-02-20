@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+
 import urls from '@Config/config';
-import homeIcon from './icons/home-icon.svg';
+
 import styles from './Nav.module.scss';
+import homeIcon from './icons/home-icon.svg';
 
 function Nav() {
     return (

@@ -1,10 +1,11 @@
 import React from 'react';
-import styles from '@App/./App.module.scss';
 import { Route, Switch } from 'react-router-dom';
-import urls from '@Config/config';
-import Search from '@App/Search';
-import Nav from '@App/Home/Nav';
+
+import styles from './App.module.css';
 import Home from '@App/Home';
+import Nav from '@App/Home/Nav';
+import Search from '@App/Search';
+import urls from '@Config/config';
 
 function App() {
     return (

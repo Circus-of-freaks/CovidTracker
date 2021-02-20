@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
-import { days } from '@utils/dateDays';
+
 import CarouselItem from '@App/Sidebar/DateCarousel/CarouselItem';
+import { days } from '@utils/dateDays';
+
 import styles from './DateCarousel.module.scss';
 
 export interface DateCarouselProps {
-    dayDate: Date,
-    updateDayDate(d: Date): void,
-    pickerDay: number,
-    setPickerDay(n: number): void,
-    dayNumber: number
+  dayDate: Date;
+  updateDayDate(d: Date): void;
+  pickerDay: number;
+  setPickerDay(n: number): void;
+  dayNumber: number;
 }
 
 const DateCarousel = ({
@@ -18,7 +20,9 @@ const DateCarousel = ({
     dayNumber,
 }: DateCarouselProps) => {
     const [carousel, setCarousel] = useState<number[]>([]);
-    const [selectedNumber, setSelectedNumber] = useState<number>(dayDate.getDay() - 1);
+    const [selectedNumber, setSelectedNumber] = useState<number>(
+        dayDate.getDay() - 1,
+    );
 
     React.useEffect(() => {
         const tempArr: number[] = [];
@@ -60,19 +64,20 @@ const DateCarousel = ({
             <span key={dayItem} className={styles.dayName}>
               {dayItem}
             </span>
-              ))}
+        ))}
         </div>
         <div className={styles.week}>
           <button type="button" onClick={prevWeek} className={styles.prevWeek} />
           <div className={styles.numbers}>
             {carousel.map((carouselItem, index) => (
               <CarouselItem
+                key={carouselItem}
                 onClick={pickDay}
                 item={carouselItem}
                 index={index}
                 selectedItem={selectedNumber}
-              />
-            ))}
+            />
+          ))}
           </div>
           <button type="button" onClick={nextWeek} className={styles.nextWeek} />
         </div>

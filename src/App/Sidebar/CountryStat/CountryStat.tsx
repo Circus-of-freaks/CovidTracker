@@ -1,15 +1,11 @@
-import React, { useState } from 'react';
-import CountryStatStore from '@Store/CountryStatStore';
 import { observer } from 'mobx-react-lite';
-import useAsync from '@utils/useAsync';
+import React from 'react';
 
 export interface CountryStatProps {
-    dayNumber: number
+  dayNumber: number;
 }
 
-const CountryStat : React.FC = () => {
-    const [store] = useState(new CountryStatStore());
-    useAsync(store.fetch, []);
+const CountryStat: React.FC = () => {
 
     return (
       <div className="sidebar-countries">
