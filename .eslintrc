@@ -63,7 +63,7 @@
           "single"
         ],
         "no-alert": "error",
-        "no-console": "error",
+        "no-console": "warn",
         "no-redeclare": "error",
         "no-var": "error",
         "no-underscore-dangle": "off",

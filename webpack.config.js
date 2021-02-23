@@ -59,12 +59,12 @@ module.exports = {
                 use: 'babel-loader'
             },
             {
-                test: /\.modules\.s?css$/,
+                test: /\.module\.s?css$/,
                 use: getCssRules(true)
             },
             {
                 test: /\.s?css$/,
-                exclude: /\.modules\.s?css$/,
+                exclude: /\.module\.s?css$/,
                 use: getCssRules(false)
             },
             {
@@ -92,7 +92,7 @@ module.exports = {
                     },
                 ],
                 exclude: /node_modules/,
-            },
+            }
         ]
     },
     resolve: {

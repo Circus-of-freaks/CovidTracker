@@ -1,12 +1,15 @@
-import { observer } from 'mobx-react-lite';
-import React from 'react';
+import React, { useContext } from 'react';
+import GlobalStatStore from '@Store/GlobalStatStore/GlobalStatStore';
+import {observer} from 'mobx-react-lite';
+import Context from '../../../components/Context';
 
 export interface CountryStatProps {
-  dayNumber: number;
+    globalStatStore: GlobalStatStore
 }
 
-const CountryStat: React.FC = () => {
-
+const CountryStat = () => {
+    const globalStore = useContext(Context);
+    console.log(globalStore._date.top);
     return (
       <div className="sidebar-countries">
         <p>keke</p>
