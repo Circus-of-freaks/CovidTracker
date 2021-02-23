@@ -110,7 +110,7 @@ module.exports = {
     plugins,
     devServer: {
         host: 'localhost',
-        port: 9002,
+        port: 3000,
         hot: true,
         inline: true
     }
