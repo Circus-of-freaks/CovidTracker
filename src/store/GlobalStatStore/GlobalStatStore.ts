@@ -23,6 +23,8 @@ export default class GlobalStatStore {
           fetch: action.bound,
           data: computed,
       });
+
+      this.fetch();
   }
 
   async fetch(): Promise<void> {
@@ -46,7 +48,7 @@ export default class GlobalStatStore {
   }
 
   get data(): GlobalStatModel {
-      log('Get data error: ', this._date);
+      log('Get data error: ', this._date.countries);
 
       return this._date;
   }

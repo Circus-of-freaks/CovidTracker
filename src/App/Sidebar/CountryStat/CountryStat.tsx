@@ -12,7 +12,7 @@ const CountryStat = () => {
     console.log(globalStore._date.top);
     return (
       <div className="sidebar-countries">
-        <p>keke</p>
+          kek
       </div>
     );
 };
