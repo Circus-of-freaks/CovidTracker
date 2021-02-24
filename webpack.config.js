@@ -68,7 +68,7 @@ module.exports = {
                 use: getCssRules(false)
             },
             {
-                test: /\.(png|svg|jpg)$/,
+                test: /\.(png|svg|jpg|gif)$/,
                 type: 'asset',
                 parser: {
                     dataUrlCondition: {
@@ -98,7 +98,7 @@ module.exports = {
     resolve: {
         extensions: ['.jsx', '.js', '.tsx', '.ts'],
         alias: {
-            components: path.resolve(srcPath, 'components'),
+            '@components': path.resolve(srcPath, 'components'),
             '@App': path.resolve(srcPath, 'App'),
             '@styles': path.resolve(srcPath, 'styles'),
             '@utils': path.resolve(srcPath, 'utils'),

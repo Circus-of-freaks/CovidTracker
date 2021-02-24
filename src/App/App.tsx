@@ -5,14 +5,14 @@ import Home from '@App/Home';
 import Nav from '@App/Home/Nav';
 import Search from '@App/Search';
 import urls from '@Config/config';
-import Context from '../components/Context';
+import GlobalStoreContext from '@components/GlobalStoreContext';
 import GlobalStatStore from '@Store/GlobalStatStore/GlobalStatStore';
 
 function App() {
     const globalStatStore = new GlobalStatStore();
     return (
       <div className={styles.app}>
-        <Context.Provider value={globalStatStore}>
+        <GlobalStoreContext.Provider value={globalStatStore}>
           <Nav />
           <main>
             <Switch>
@@ -20,7 +20,7 @@ function App() {
               <Route exact path={urls.SEARCH} component={Search} />
             </Switch>
           </main>
-        </Context.Provider>
+        </GlobalStoreContext.Provider>
       </div>
     );
 }

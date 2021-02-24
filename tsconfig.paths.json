@@ -7,7 +7,8 @@
       "@utils/*": ["src/utils/*"],
       "@Config/*": ["src/config/*"],
       "@Models/*": ["src/store/models/*"],
-      "@Store/*": ["src/store/*"]
+      "@Store/*": ["src/store/*"],
+      "@components/*": ["src/components/*"]
     }
   }
 }
