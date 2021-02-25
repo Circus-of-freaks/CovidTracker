@@ -1,0 +1,21 @@
+@import "src/styles/variables";
+
+.sidebar {
+  margin-top: -$marginWrap;
+  padding-top: $marginWrap;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #222529;
+  height: 100vh;
+}
+
+.tittle {
+  margin-bottom: 25px;
+}
+
+.cases {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  margin-bottom: 25px;
+}

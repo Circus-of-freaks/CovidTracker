@@ -1,27 +1,17 @@
-.country {
-  display: flex;
-  justify-content: space-between;
-}
+/* Error: Can't find stylesheet to import.
+ *   ,
+ * 1 | @import 'src/styles/variables.scss';
+ *   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ *   '
+ *   Country.module.scss 1:9  root stylesheet */
 
-.icon {
-  width: 16px;
-  height: 16px;
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: "Error: Can't find stylesheet to import.\a   \2577 \a 1 \2502  @import 'src/styles/variables.scss';\a   \2502          ^^^^^^^^^^^^^^^^^^^^^^^^^^^\a   \2575 \a   Country.module.scss 1:9  root stylesheet";
 }
-
-.name {
-  color: #9a9faa;
-  font-size: 20px;
-}
-
-.info {
-  display: flex;
-  gap: 15px;
-  text-align: center;
-  align-items: center;
-}
-
-.additional {
-  color: #f5c778;
-}
-
-/*# sourceMappingURL=Country.module.css.map */

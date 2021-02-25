@@ -22,6 +22,9 @@
     "node": true,
     "mocha": true
   },
+  "globals": {
+    "JSX": true
+  },
   "overrides": [
     {
       "files": [

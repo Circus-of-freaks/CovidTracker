@@ -1,7 +1,7 @@
 enum caseStatus {
-  confirmed = 'confirmed',
-  deaths = 'deaths',
-  recovered = 'recovered',
+  confirmed = 'Infected',
+  deaths = 'Deaths',
+  recovered = 'Recovered',
 }
 
 export default caseStatus;
