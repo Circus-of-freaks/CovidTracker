@@ -68,6 +68,16 @@ module.exports = {
                 use: getCssRules(false)
             },
             {
+                test: /\.(woff|woff2|eot|ttf|otf)$/,
+                exclude: /node_modules/,
+                loader: 'url-loader',
+                options: {
+                    publicPath: './fonts/',
+                    name: '../fonts/[name].[ext]',
+                    limit: 1000
+                },
+            },
+            {
                 test: /\.(png|svg|jpg|gif)$/,
                 type: 'asset',
                 parser: {

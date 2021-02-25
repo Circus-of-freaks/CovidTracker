@@ -3,6 +3,7 @@ import { match } from 'react-router';
 import countriesJson from '@utils/countries.json';
 import './CountryPage.css';
 import CountryStore from '@Store/CountryStore/CountryStore';
+import {observer} from 'mobx-react-lite';
 
 export interface CountryPageProps {
     router: match<any>,
@@ -23,4 +24,4 @@ const CountryPage = ({router} : CountryPageProps) => {
     );
 };
 
-export default CountryPage;
+export default observer(CountryPage);

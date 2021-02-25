@@ -8,7 +8,6 @@ const requestCountry = async (countryName: string): Promise<ApiResponse<CountryI
     try {
         const response = await axios(apiUrls.country.afterDate(countryName));
         const data = normalizeCountryApi(response.data);
-        console.log('DATA :L ',data);
         return <ApiResponse>{
             isError: false,
             data: data,
