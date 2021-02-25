@@ -1,8 +1,9 @@
 export type CountryInfo = {
-    Confirmed: number,
-    Deaths: number,
-    Active: number,
-    Recovered: number
+    confirmed: number,
+    deaths: number,
+    active: number,
+    recovered: number,
+    date: string,
 }
 
-export type CountryModel = Record<string, CountryInfo>
+export type CountryModel = Record<string, CountryInfo>;

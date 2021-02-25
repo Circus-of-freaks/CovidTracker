@@ -19,11 +19,19 @@ export type countryApi = {
 export const normalizeCountryApi = (raw: countryApi[]) : CountryModel => {
     const result = <CountryModel>{};
     raw.map((item) => {
+        if (result[item.Date]) {
+            result[item.Date].active += item.Active;
+            result[item.Date].confirmed += item.Confirmed;
+            result[item.Date].deaths += item.Deaths;
+            result[item.Date].recovered += item.Recovered;
+            return;
+        }
         result[item.Date] = {
-            Active: item.Active,
-            Confirmed: item.Confirmed,
-            Deaths: item.Deaths,
-            Recovered: item.Recovered
+            active: item.Active,
+            confirmed: item.Confirmed,
+            deaths: item.Deaths,
+            recovered: item.Recovered,
+            date: item.Date,
         };
     });
 

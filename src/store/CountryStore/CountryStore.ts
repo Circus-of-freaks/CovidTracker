@@ -10,7 +10,7 @@ import Meta from '@utils/meta';
 import requestCountry from '@Store/CountryStore/requestCountry';
 
 export default class CountryStore {
-    _data = <CountryModel>{};
+    _data = {} as CountryModel;
     meta: Meta = Meta.Initial;
     countryName: string;
 
@@ -22,6 +22,7 @@ export default class CountryStore {
             fetch: action.bound,
             data: computed,
         });
+        this.fetch();
     }
 
     async fetch(): Promise<void> {
