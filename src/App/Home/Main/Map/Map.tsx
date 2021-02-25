@@ -1,12 +1,14 @@
 /* global google */
-import React from 'react';
-// import { useHistory } from 'react-router-dom';
+import React, {useContext} from 'react';
+import { useHistory } from 'react-router-dom';
 import countriesJson from '@utils/countries.json';
-import GlobalStatStore from '@Store/GlobalStatStore/GlobalStatStore';
-import { observer } from 'mobx-react-lite';
-import { Loader } from '@googlemaps/js-api-loader';
+import {observer} from 'mobx-react-lite';
+import {Loader} from '@googlemaps/js-api-loader';
 import styles from './Map.module.scss';
 import mapStyles from './MapStyles';
+import GlobalStoreContext from '@components/GlobalStoreContext';
+import mapLoader from './map-loader.gif';
+import Meta from '@utils/meta';
 
 const MAP_API_KEY = 'AIzaSyCzTCZVbwEccPX1JdZ2cMZR6I6D1bYAz7U';
 
@@ -33,16 +35,27 @@ function getSvg(confirmedCases: number): string {
 }
 
 function Map() {
-    const store = new GlobalStatStore();
-    const storePromise = store.fetch();
+    const store = useContext(GlobalStoreContext);
+    switch (store.meta) {
+    case Meta.Loading:
+        return <img src={mapLoader} alt="loading..." className={styles.loader} id="map"/>;
+    case Meta.Error:
+        return (
+                <div className={styles.loader} id="map">
+                  <img src={mapLoader} alt="loading..."/>
+                  <h4>Простите, кажется, наше API в очередной раз прилегло отдохнуть(</h4>
+                </div>
+        );
+    }
+
     const countries = countriesJson as Countries;
-    // const history = useHistory();
+    const history = useHistory();
     const markersMap: Record<string, google.maps.Marker> = {};
 
-    storePromise.then(() => {
-        for (const [iso, info] of Object.entries(store.data.countries)) {
+    loader.load().then(() => {
+        for (const iso of Object.keys(store.data.countries)) {
             const svgMarker = {
-                path: getSvg(info.totalConfirmed),
+                path: getSvg(store.data.countries[iso].totalConfirmed),
                 fillColor: '#B73030',
                 fillOpacity: 1,
                 strokeWeight: 0,
@@ -61,9 +74,7 @@ function Map() {
                 // });
             }
         }
-    });
 
-    loader.load().then(() => {
         const map = new google.maps.Map(document.getElementById('map') as HTMLElement, {
             center: { lat: 44.177751, lng: 10.757718 },
             zoom: 2,
@@ -77,22 +88,27 @@ function Map() {
             // draggableCursor: 'default',
         });
         map.setOptions({ styles: mapStyles });
-        storePromise.then(() => {
-            for (const [iso, marker] of Object.entries(markersMap)) {
-                marker.setMap(map);
-                const popupContent = `<p class="${styles.map__info}">${countries[iso].country}</p>
+
+        for (const iso of Object.keys(markersMap)) {
+            markersMap[iso].setMap(map);
+            const popupContent = `<p class="${styles.map__info}">${countries[iso].country}</p>
                                       <div class="${styles.map__infoContainer}">
-                                        <h4 class="${styles.map__infoNumber}">${111}</h4>
+                                        <h4 class="${styles.map__infoNumber}">${store.data.countries[iso].totalConfirmed}</h4>
                                         <h4 class="${styles.map__info}">INFECTED</h4>
                                       </div>`;
-                const infowindow = new google.maps.InfoWindow({
-                    content: popupContent,
-                });
-                marker.addListener('click', () => {
-                    infowindow.open(map, marker);
-                });
-            }
-        });
+            const infowindow = new google.maps.InfoWindow({
+                content: popupContent,
+            });
+            markersMap[iso].addListener('mouseover', () => {
+                infowindow.open(map, markersMap[iso]);
+            });
+            markersMap[iso].addListener('mouseout', () => {
+                infowindow.close();
+            });
+            markersMap[iso].addListener('click', () => {
+                history.push(iso);
+            });
+        }
     });
 
     return <div className={styles.map} id="map" />;

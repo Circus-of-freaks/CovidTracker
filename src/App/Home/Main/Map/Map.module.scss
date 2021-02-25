@@ -8,12 +8,19 @@
   outline: none;
 }
 
+.loader {
+  grid-area: map;
+  align-self: center;
+  justify-self: center;
+}
+
 .map__info {
   color: black;
 }
 
 .map__infoNumber {
   color: #B73030;
+  margin-right: 10px;
 }
 
 .map__infoContainer {

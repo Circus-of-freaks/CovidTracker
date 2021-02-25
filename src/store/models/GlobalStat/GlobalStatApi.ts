@@ -106,9 +106,7 @@ export const normalizeGlobalStatApi = (raw: GlobalStatApi): GlobalStatModel => {
         newActive:
       raw.Global.NewConfirmed - raw.Global.NewDeaths - raw.Global.NewRecovered,
         totalActive:
-      raw.Global.TotalConfirmed
-      - raw.Global.TotalDeaths
-      - raw.Global.TotalRecovered,
+      raw.Global.TotalConfirmed - raw.Global.TotalDeaths - raw.Global.TotalRecovered,
         newDeaths: raw.Global.NewDeaths,
         totalDeaths: raw.Global.TotalDeaths,
         newRecovered: raw.Global.NewRecovered,
@@ -129,7 +127,7 @@ export const normalizeGlobalStatApi = (raw: GlobalStatApi): GlobalStatModel => {
         };
         computeTopCountries(topCountries, countries, country);
     }
-    
     result.top = topCountries;
+
     return result;
 };

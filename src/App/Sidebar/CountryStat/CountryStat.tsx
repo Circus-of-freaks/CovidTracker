@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import GlobalStatStore from '@Store/GlobalStatStore/GlobalStatStore';
 import { observer } from 'mobx-react-lite';
 import Context from '../../../components/Context';

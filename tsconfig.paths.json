@@ -8,7 +8,7 @@
       "@Config/*": ["src/config/*"],
       "@Models/*": ["src/store/models/*"],
       "@Store/*": ["src/store/*"],
-      "@Components/*": ["src/components/*"]
+      "@components/*": ["src/components/*"]
     }
   }
 }
