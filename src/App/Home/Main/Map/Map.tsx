@@ -106,7 +106,7 @@ function Map() {
                 infowindow.close();
             });
             markersMap[iso].addListener('click', () => {
-                history.push(iso);
+                history.push(`/country/${iso}`);
             });
         }
     });

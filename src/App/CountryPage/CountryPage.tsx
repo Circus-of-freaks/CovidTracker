@@ -1,14 +1,25 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { match } from 'react-router';
+import countriesJson from '@utils/countries.json';
+import './CountryPage.css';
+import CountryStore from '@Store/CountryStore/CountryStore';
 
 export interface CountryPageProps {
     router: match<any>,
 }
 
+type Countries = Record<string, {
+    country: string,
+}>
+
 const CountryPage = ({router} : CountryPageProps) => {
-    console.log(router.params.code);
+    const countries = countriesJson as Countries;
+    const [store] = useState(new CountryStore(countries[router.params.code].country));
+    store.fetch();
     return (
-        <div>dke</div>
+        <div className={'country'}>
+            <h2 className={'country__tittle'}>{countries[router.params.code].country}</h2>
+        </div>
     );
 };
 

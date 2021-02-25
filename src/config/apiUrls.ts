@@ -10,6 +10,7 @@ const apiUrls = {
                 time,
             )}`,
         ),
+        afterDate: (country: string): string => `https://api.covid19api.com/live/country/${country}/status/confirmed/date/2021-01-01T13:13:30Z`
     },
     global: (): string => covidApi('summary'),
 };
