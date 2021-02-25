@@ -19,9 +19,14 @@
 }
 
 .caseBtn:active {
+  color: $yellow;
   background: $button-active;
 }
 
 .caseBtn:visited {
-  background: var(--button-visited);
+  background: $button-visited;
+}
+
+.active {
+  color: $yellow;
 }

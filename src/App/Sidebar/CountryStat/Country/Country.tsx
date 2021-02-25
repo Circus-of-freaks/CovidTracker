@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './Country.module.scss';
 
 export interface CountryProps {
@@ -12,7 +13,9 @@ const Country = ({ countryName, additional, total, countryCode }: CountryProps) 
   <div className={styles.country}>
     <div className={styles.info}>
       <img className={styles.icon} src={require(`./countriesIcon/${countryCode.toLowerCase()}.png`)} alt="error" />
-      <div className={styles.name}>{countryName}</div>
+      <Link to={`/country/${countryCode}`}>
+          <div className={styles.name}>{countryName}</div>
+      </Link>
       <div className={styles.additional}>+{additional}</div>
     </div>
     <div className={styles.total}>{total}</div>

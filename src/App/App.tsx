@@ -1,12 +1,13 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import styles from './App.module.scss';
 import Home from '@App/Home';
 import Nav from '@App/Home/Nav';
 import Search from '@App/Search';
 import urls from '@Config/config';
 import GlobalStoreContext from '@components/GlobalStoreContext';
 import GlobalStatStore from '@Store/GlobalStatStore/GlobalStatStore';
+import CountryPage from '@App/CountryPage/CountryPage';
+import styles from './App.module.scss';
 
 function App() {
     const globalStatStore = new GlobalStatStore();
@@ -18,6 +19,10 @@ function App() {
             <Switch>
               <Route exact path={urls.HOME} component={Home} />
               <Route exact path={urls.SEARCH} component={Search} />
+              <Route
+                  exact path={urls.COUNTRY}
+                  render={(routerProps) => <CountryPage router={routerProps.match}/>}
+              />
             </Switch>
           </main>
         </GlobalStoreContext.Provider>
