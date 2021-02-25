@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["Country.module.scss"],"names":[],"mappings":"AAAA;EACE;EACA","file":"Country.module.css"}
+{"version":3,"sourceRoot":"","sources":["Country.module.scss","../../../../styles/variables.scss"],"names":[],"mappings":"AAEA;EACE;EACA;;;AAGF;EACE;EACA;;;AAGF;EACE,OCVK;EDWL,WCVS;;;ADaX;EACE;EACA;EACA;EACC;;;AAGH;EACE,OCxBO","file":"Country.module.css"}

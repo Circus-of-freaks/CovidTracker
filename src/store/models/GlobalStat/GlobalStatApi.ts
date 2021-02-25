@@ -129,6 +129,7 @@ export const normalizeGlobalStatApi = (raw: GlobalStatApi): GlobalStatModel => {
         };
         computeTopCountries(topCountries, countries, country);
     }
-
+    
+    result.top = topCountries;
     return result;
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Header from '@App/Home/Main/Header';
-import Map from '@App/Home/Main/Map';
+// import Map from '@App/Home/Main/Map';
 import Stat from '@App/Home/Main/Stat';
 import './Main.css';
 
@@ -10,7 +10,7 @@ function App() {
       <div className="main">
         <Header />
         <Stat />
-        <Map />
+        {/* <Map /> */}
       </div>
     );
 }

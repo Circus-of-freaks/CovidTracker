@@ -8,7 +8,7 @@
 
 main {
   display: grid;
-  grid-template-columns: 0.9fr 0.1fr;
+  grid-template-columns: 1fr 0.4fr;
   height: 100%;
 }
 
