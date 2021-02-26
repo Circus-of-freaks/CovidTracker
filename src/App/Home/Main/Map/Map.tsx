@@ -9,6 +9,7 @@ import mapStyles from './MapStyles';
 import GlobalStoreContext from '@Store/GlobalStatStore/GlobalStoreContext';
 import mapLoader from './map-loader.gif';
 import Meta from '@utils/meta';
+import {routes} from '@Config/config';
 
 const MAP_API_KEY = 'AIzaSyCzTCZVbwEccPX1JdZ2cMZR6I6D1bYAz7U';
 
@@ -106,7 +107,7 @@ function Map() {
                 infowindow.close();
             });
             markersMap[iso].addListener('click', () => {
-                history.push(`/country/${iso}`);
+                history.push(routes.country(iso));
             });
         }
     });
