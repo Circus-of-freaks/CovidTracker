@@ -8,6 +8,7 @@ COPY tsconfig.json .
 COPY tsconfig.paths.json .
 COPY webpack.config.js .
 COPY babel.config.js .
+COPY .eslintrc .
 RUN yarn install
 
 
