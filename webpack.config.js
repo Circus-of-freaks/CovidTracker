@@ -45,7 +45,6 @@ const  getCssRules = (withModules) => {
 };
 
 module.exports = {
-    context: path.join(__dirname, 'src'),
     entry: ['@babel/polyfill', path.resolve(__dirname, './src/index.tsx')],
     devtool: 'eval-source-map',
     output: {
@@ -99,13 +98,13 @@ module.exports = {
     resolve: {
         extensions: ['.jsx', '.js', '.tsx', '.ts'],
         alias: {
-            components: path.resolve(srcPath, './components'),
-            '@App': path.resolve(srcPath, './App'),
-            '@styles': path.resolve(srcPath, './styles'),
-            '@utils': path.resolve(srcPath, './utils'),
-            '@Config': path.resolve(srcPath, './config'),
-            '@Models': path.resolve(srcPath, './store/models'),
-            '@Store': path.resolve(srcPath, './store')
+            components: path.resolve(srcPath, 'components'),
+            '@App': path.resolve(srcPath, 'App'),
+            '@styles': path.resolve(srcPath, 'styles'),
+            '@utils': path.resolve(srcPath, 'utils'),
+            '@Config': path.resolve(srcPath, 'config'),
+            '@Models': path.resolve(srcPath, 'store/models'),
+            '@Store': path.resolve(srcPath, 'store')
         }
     },
     plugins,
