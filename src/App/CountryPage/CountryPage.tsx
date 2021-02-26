@@ -1,11 +1,12 @@
-import React, {useState} from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Legend, ResponsiveContainer } from 'recharts';
+import React from 'react';
 import { match } from 'react-router';
 import countriesJson from '@utils/countries.json';
-import './CountryPage.css';
 import CountryStore from '@Store/CountryStore/CountryStore';
-import Meta from '@utils/meta';
-import {observer} from 'mobx-react-lite';
+import CountryStoreContext from '@components/CountryStoreContext';
+import Stat from './Stat';
+import Plot from './Plot';
+import styles from './CountryPage.module.scss';
+
 
 export interface CountryPageProps {
     router: match<any>,
@@ -17,38 +18,17 @@ type Countries = Record<string, {
 
 const CountryPage = ({router} : CountryPageProps) => {
     const countries = countriesJson as Countries;
-    const [store] = useState(new CountryStore(countries[router.params.code].country));
-    if (store.meta !== Meta.Success) {
-        return <div>AHAHAHHAHAH</div>;
-    }
-    console.log(Object.values(store.data));
+    const countryStore = new CountryStore(countries[router.params.code].country);
 
     return (
-
-            <ResponsiveContainer width="100%" height="100%">
-                <LineChart
-                    width={500}
-                    height={300}
-                    data={Object.values(store.data)}
-                    margin={{
-                        top: 5,
-                        right: 30,
-                        left: 20,
-                        bottom: 5,
-                    }}
-                >
-                    <CartesianGrid strokeDasharray="3 3" horizontal={false} />
-                    <XAxis dataKey="date" />
-                    <YAxis />
-                    <Legend />
-                    <Line type="monotone" dataKey="confirmed" stroke="#f5c778" dot={false} />
-                    <Line type="monotone" dataKey="active" stroke="#f5c778" dot={false} />
-                    <Line type="monotone" dataKey="deaths" stroke="#f5c778" dot={false} />
-                    <Line type="monotone" dataKey="recovered" stroke="#f5c778" dot={false} />
-                </LineChart>
-            </ResponsiveContainer>
-
+        <CountryStoreContext.Provider value={countryStore}>
+            <div className={styles.page}>
+                <h2 className={styles.country__tittle}>{countries[router.params.code].country}</h2>
+                <Stat />
+                <Plot />
+            </div>
+        </CountryStoreContext.Provider>
     );
 };
 
-export default observer(CountryPage);
+export default CountryPage;

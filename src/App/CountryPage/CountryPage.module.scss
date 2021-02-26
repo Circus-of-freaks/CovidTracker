@@ -1,0 +1,16 @@
+.page {
+  display: grid;
+  grid-template-areas: "title title title"
+                       ". stat ."
+                       ". plot. ";
+  grid-template-columns: 50px 1fr 50px;
+  grid-gap: 30px;
+}
+
+.country__tittle {
+  grid-area: title;
+  font-size: 54px;
+  justify-self: center;
+  text-align: center;
+  font-weight: 700;
+}
