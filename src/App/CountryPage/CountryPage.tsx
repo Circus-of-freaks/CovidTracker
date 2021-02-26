@@ -20,6 +20,7 @@ const CountryPage = ({router} : CountryPageProps) => {
     const countries = countriesJson as Countries;
     const countryCode = countries[router.params.code].country;
     const [countryStore] = useState(() => new CountryStore(countryCode));
+
     return (
         <CountryStoreContext.Provider value={countryStore}>
             <div className={styles.page}>

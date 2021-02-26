@@ -78,8 +78,9 @@ const calc = (casesState: caseStatus, top: TopCountries, countries: Record<strin
 const CountryStat = ({casesState}: CountryStatProps) => {
     const globalStore = useContext(GlobalStoreContext);
     const { top, countries } = globalStore.data;
-    
-    const memoArr = useMemo(() => calc(casesState, top, countries), [top]);
+
+    const memoArr = useMemo(() => calc(casesState, top, countries), [casesState]);
+
     return (
         <div className={styles.list}>
             {memoArr}
