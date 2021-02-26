@@ -2,12 +2,12 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@App/*": ["src/App/*"],
-      "@styles/*": ["src/styles/*"],
-      "@utils/*": ["src/utils/*"],
-      "@Config/*": ["src/config/*"],
-      "@Models/*": ["src/store/models/*"],
-      "@Store/*": ["src/store/*"]
+      "@App/*": ["./src/App/*"],
+      "@styles/*": ["./src/styles/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@Config/*": ["./src/config/*"],
+      "@Models/*": ["./src/store/models/*"],
+      "@Store/*": ["./src/store/*"]
     }
   }
 }
