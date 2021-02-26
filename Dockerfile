@@ -4,12 +4,15 @@ WORKDIR /code
 
 COPY yarn.lock .
 COPY package.json .
+COPY tsconfig.json .
+COPY tsconfig.paths.json .
+COPY webpack.config.js .
+COPY babel.config.js .
 RUN yarn install
 
 
 COPY public public
 COPY src src
-RUN cd src/
 RUN ls -l
 RUN yarn build
 
