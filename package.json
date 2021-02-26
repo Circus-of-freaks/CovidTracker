@@ -1,7 +1,7 @@
 {
   "name": "covid_tracker",
   "version": "1.0.0",
-  "main": "src/index.tsx",
+  "main": "./src/index.tsx",
   "license": "MIT",
   "browser": {
     "[module-name]": false
