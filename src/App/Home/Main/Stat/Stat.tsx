@@ -1,8 +1,19 @@
 import React, {useContext} from 'react';
-import StatCard from '@App/Home/Main/Stat/StatCard';
+import StatCard from '@components/StatCard';
+import './Stat.css';
 import GlobalStoreContext from '@components/GlobalStoreContext';
 import {observer} from 'mobx-react-lite';
-import './Stat.css';
+
+export type StatProps = {
+    totalConfirmed: number;
+    totalActive: number;
+    totalDeaths: number;
+    totalRecovered: number;
+    newConfirmed: number;
+    newActive: number;
+    newDeaths: number;
+    newRecovered: number;
+}
 
 function Stat() {
     const store = useContext(GlobalStoreContext);

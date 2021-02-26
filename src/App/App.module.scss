@@ -3,7 +3,7 @@
 .app {
   margin-top: $marginWrap;
   display: grid;
-  grid-template-columns: 60px auto;
+  grid-template-columns: $navWidth auto;
   color: $white;
   height: 100%;
 }

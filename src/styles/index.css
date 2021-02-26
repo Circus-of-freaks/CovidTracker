@@ -1,3 +1,13 @@
+@font-face {
+  font-family: 'Montserrat';
+  src: url('fonts/Montserrat-Black.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'Barlow';
+  src: url('fonts/Barlow/Barlow-Black.ttf') format('ttf');
+}
+
 /* Box sizing rules */
 *,
 *::before,
@@ -32,9 +42,7 @@ dd {
 /* Set core body defaults */
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-  sans-serif;
+  font-family: 'Barlow', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #282B2E;
@@ -91,4 +99,9 @@ html {
 
 button {
   border: none;
+}
+
+a {
+  text-decoration: none;
+  color: unset;
 }

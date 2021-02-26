@@ -1,0 +1,7 @@
+.stat {
+    grid-area: stat;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-left: 20px;
+}

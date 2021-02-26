@@ -10,6 +10,8 @@ const apiUrls = {
                 time,
             )}`,
         ),
+        afterDate: (country: string): string => `https://api.covid19api.com/country/${country}?
+        from=2021-01-01T13:13:30Z&to=${new Date(Date.now()).toISOString()}`
     },
     global: (): string => covidApi('summary'),
 };

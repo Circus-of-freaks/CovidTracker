@@ -15,14 +15,16 @@ function App() {
       <div className={styles.app}>
         <GlobalStoreContext.Provider value={globalStatStore}>
           <Nav />
-          <main>
+            <Switch>
+                <Route
+                    exact path={urls.COUNTRY}
+                    render={(routerProps) => <CountryPage router={routerProps.match}/>}
+                />
+            </Switch>
+            <Route exact path={urls.SEARCH} component={Search} />
+            <main>
             <Switch>
               <Route exact path={urls.HOME} component={Home} />
-              <Route exact path={urls.SEARCH} component={Search} />
-              <Route
-                  exact path={urls.COUNTRY}
-                  render={(routerProps) => <CountryPage router={routerProps.match}/>}
-              />
             </Switch>
           </main>
         </GlobalStoreContext.Provider>
