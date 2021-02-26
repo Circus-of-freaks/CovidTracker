@@ -1,4 +1,4 @@
-FROM node:10.16.0-alpine as frontend_builder
+FROM node:10.17.0-alpine as frontend_builder
 
 WORKDIR /code
 
