@@ -10,6 +10,7 @@ RUN yarn install
 # Установка кода приложения
 COPY public public
 COPY src src
+RUN ls -l
 RUN yarn build
 # <----- ЗАКОНЧИЛСЯ fronteend_builder
 
