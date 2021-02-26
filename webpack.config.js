@@ -59,16 +59,26 @@ module.exports = {
                 use: 'babel-loader'
             },
             {
-                test: /\.modules\.s?css$/,
+                test: /\.module\.s?css$/,
                 use: getCssRules(true)
             },
             {
                 test: /\.s?css$/,
-                exclude: /\.modules\.s?css$/,
+                exclude: /\.module\.s?css$/,
                 use: getCssRules(false)
             },
             {
-                test: /\.(png|svg|jpg)$/,
+                test: /\.(woff|woff2|eot|ttf|otf)$/,
+                exclude: /node_modules/,
+                loader: 'url-loader',
+                options: {
+                    publicPath: './fonts/',
+                    name: '../fonts/[name].[ext]',
+                    limit: 1000
+                },
+            },
+            {
+                test: /\.(png|svg|jpg|gif)$/,
                 type: 'asset',
                 parser: {
                     dataUrlCondition: {
@@ -92,25 +102,25 @@ module.exports = {
                     },
                 ],
                 exclude: /node_modules/,
-            },
+            }
         ]
     },
     resolve: {
         extensions: ['.jsx', '.js', '.tsx', '.ts'],
         alias: {
-            components: path.resolve(srcPath, 'components'),
             '@App': path.resolve(srcPath, 'App'),
             '@styles': path.resolve(srcPath, 'styles'),
             '@utils': path.resolve(srcPath, 'utils'),
             '@Config': path.resolve(srcPath, 'config'),
             '@Models': path.resolve(srcPath, 'store/models'),
-            '@Store': path.resolve(srcPath, 'store')
+            '@Store': path.resolve(srcPath, 'store'),
+            '@components': path.resolve(srcPath, 'components')
         }
     },
     plugins,
     devServer: {
         host: 'localhost',
-        port: 9002,
+        port: 3000,
         hot: true,
         inline: true
     }

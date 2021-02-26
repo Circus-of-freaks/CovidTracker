@@ -1,5 +1,4 @@
 import axios from 'axios';
-
 import apiUrls from '@Config/apiUrls';
 import { normalizeGlobalStatApi } from '@Models/GlobalStat/GlobalStatApi';
 import type { GlobalStatApi } from '@Models/GlobalStat/GlobalStatApi';

@@ -1,15 +1,15 @@
-@import "../styles/variables";
+@import "src/styles/variables";
 
 .app {
   margin-top: $marginWrap;
   display: grid;
-  grid-template-columns: 60px auto;
+  grid-template-columns: $navWidth auto;
   color: $white;
   height: 100%;
 }
 
 main {
   display: grid;
-  grid-template-columns: 0.9fr 0.1fr;
+  grid-template-columns: 1fr 0.4fr;
   height: 100%;
 }

@@ -1,0 +1,28 @@
+.map {
+  grid-area: map;
+  max-width: 1030px;
+  min-height: 670px;
+  justify-self: center;
+  width: -moz-available;
+  width: -webkit-fill-available;
+  outline: none;
+
+  &__info {
+    color: black;
+  }
+
+  &__infoNumber {
+    color: #B73030;
+    margin-right: 10px;
+  }
+
+  &__infoContainer {
+    display: flex;
+  }
+}
+
+.loader {
+  grid-area: map;
+  align-self: center;
+  justify-self: center;
+}

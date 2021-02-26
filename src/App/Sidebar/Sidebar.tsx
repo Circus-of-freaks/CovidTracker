@@ -1,26 +1,21 @@
 import React, { useState } from 'react';
-
+import styles from './Sidebar.module.scss';
 import CountryStat from '@App/Sidebar/CountryStat';
-import DateCarousel from '@App/Sidebar/DateCarousel';
-
-const date = new Date();
-const dayNumber = date.getDay();
+import caseStatus from '@utils/caseStatus';
+import CaseButton from '@App/Sidebar/CaseButton/CaseButton';
 
 const SideBar: React.FC = () => {
-    const [dayDate, setDayDate] = useState<Date>(date);
-    const [pickerDay, setPickerDay] = useState<number>(date.getDay());
+    const [casesState, setCasesState] = useState(caseStatus.confirmed);
 
     return (
-      <div className="sidebar">
-        <h2 className="tittle">Cases Info</h2>
-        <DateCarousel
-          dayDate={dayDate}
-          updateDayDate={setDayDate}
-          pickerDay={pickerDay}
-          setPickerDay={setPickerDay}
-          dayNumber={dayNumber}
-      />
-        <CountryStat />
+      <div className={styles.sidebar}>
+        <h2 className={styles.tittle}>Cases Info</h2>
+          <div className={styles.cases}>
+            <CaseButton onClick={setCasesState} state={casesState} caseName={caseStatus.confirmed}/>
+            <CaseButton onClick={setCasesState} state={casesState} caseName={caseStatus.deaths}/>
+            <CaseButton onClick={setCasesState} state={casesState} caseName={caseStatus.recovered}/>
+          </div>
+        <CountryStat casesState={casesState}/>
       </div>
     );
 };

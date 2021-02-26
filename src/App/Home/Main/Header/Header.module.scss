@@ -1,0 +1,11 @@
+@import 'src/styles/variables';
+
+.header {
+  grid-area: header;
+  padding-left: 20px;
+}
+
+.description {
+  margin: 10px 0;
+  color: $gray;
+}

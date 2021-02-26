@@ -1,17 +1,32 @@
-import React from 'react';
-
+import React, {useContext} from 'react';
+import StatCard from '@components/StatCard';
 import './Stat.css';
-import StatCard from '@App/Home/Main/Stat/StatCard';
+import GlobalStoreContext from '@Store/GlobalStatStore/GlobalStoreContext';
+import {observer} from 'mobx-react-lite';
+
+export type StatProps = {
+    totalConfirmed: number;
+    totalActive: number;
+    totalDeaths: number;
+    totalRecovered: number;
+    newConfirmed: number;
+    newActive: number;
+    newDeaths: number;
+    newRecovered: number;
+}
 
 function Stat() {
+    const store = useContext(GlobalStoreContext);
+    const globalData = store.data.global || {};
+
     return (
       <div className="stat">
-        <StatCard title="Заражено" number={11000} newCases={110} />
-        <StatCard title="Активно" number={10000} newCases={100} />
-        <StatCard title="Умерло" number={50} newCases={5} />
-        <StatCard title="Вылечилось" number={100} newCases={10} />
+        <StatCard title="Infected" number={globalData?.totalConfirmed} newCases={globalData?.newConfirmed} />
+        <StatCard title="Active" number={globalData?.totalActive} newCases={globalData?.newActive} />
+        <StatCard title="Died" number={globalData?.totalDeaths} newCases={globalData?.newDeaths} />
+        <StatCard title="Recovered" number={globalData?.totalRecovered} newCases={globalData?.newRecovered} />
       </div>
     );
 }
 
-export default Stat;
+export default observer(Stat);

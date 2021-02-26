@@ -1,16 +1,37 @@
+@import 'src/styles/variables.scss';
+@import 'src/styles/mixins';
+
 .country {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  justify-content: space-between;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
 }
 
 .name {
+  color: $gray;
+  font-size: $mediumFZ;
 
+  &:hover {
+    @include textHower();
+  }
+}
+
+.info {
+  display: flex;
+  gap: 15px;
+  text-align: center;
+  align-items: center;
 }
 
 .additional {
-
+  color: $yellow;
 }
 
 .total {
-
+  font-size: 16px;
+  font-weight: 600;
 }

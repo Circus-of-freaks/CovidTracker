@@ -8,7 +8,6 @@ import {
 
 import { GlobalStatModel } from '@Models/GlobalStat/GlobalStatModel';
 import requestGlobalStat from '@Store/GlobalStatStore/requestGlobalStat';
-import log from '@utils/log';
 import Meta from '@utils/meta';
 
 export default class GlobalStatStore {
@@ -46,8 +45,6 @@ export default class GlobalStatStore {
   }
 
   get data(): GlobalStatModel {
-      log('Get data error: ', this._date);
-
       return this._date;
   }
 }
