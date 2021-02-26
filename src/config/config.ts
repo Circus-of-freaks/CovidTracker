@@ -5,4 +5,8 @@ const urls = {
     COUNTRY: '/country/:code'
 };
 
+export const routes = {
+    country: (code: string) => `/country/${code}`
+};
+
 export default urls;

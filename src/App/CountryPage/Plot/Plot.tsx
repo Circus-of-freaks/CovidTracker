@@ -1,6 +1,6 @@
 import {CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, XAxis, YAxis} from 'recharts';
 import React, {useContext} from 'react';
-import CountryStoreContext from '@components/CountryStoreContext';
+import CountryStoreContext from '@Store/CountryStore/CountryStoreContext';
 import Meta from '@utils/meta';
 import {observer} from 'mobx-react-lite';
 import styles from './Plot.module.scss';

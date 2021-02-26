@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import StatCard from '@components/StatCard';
 import './Stat.css';
-import CountryStoreContext from '@components/CountryStoreContext';
+import CountryStoreContext from '@Store/CountryStore/CountryStoreContext';
 import {observer} from 'mobx-react-lite';
 
 export type StatProps = {
@@ -13,14 +13,14 @@ export type StatProps = {
 
 function Stat() {
     const store = useContext(CountryStoreContext);
-    const dateArray = Object.keys(store.data);
-    const date = dateArray[dateArray.length - 1];
+    const { todayDate} = store;
+
     return (
       <div className="stat">
-        <StatCard title="Заражено" number={store.data[date]?.confirmed}/>
-        <StatCard title="Активно" number={store.data[date]?.active}/>
-        <StatCard title="Умерло" number={store.data[date]?.deaths}/>
-        <StatCard title="Вылечилось" number={store.data[date]?.recovered}/>
+        <StatCard title="Заражено" number={todayDate?.confirmed}/>
+        <StatCard title="Активно" number={todayDate?.active}/>
+        <StatCard title="Умерло" number={todayDate?.deaths}/>
+        <StatCard title="Вылечилось" number={todayDate?.recovered}/>
       </div>
     );
 }

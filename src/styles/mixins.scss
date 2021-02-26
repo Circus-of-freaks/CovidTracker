@@ -8,3 +8,8 @@
   align-items: center;
   justify-content: center;
 }
+
+@mixin textHower {
+  transition: all 0.5s ease;
+  color: $yellow;
+}

@@ -9,7 +9,7 @@ type GlobalStat = {
   totalRecovered: number;
 };
 
-export type CountryStat = {
+export type CountryStatType = {
   country: string;
   newConfirmed: number;
   totalConfirmed: number;
@@ -27,6 +27,6 @@ export type TopCountries = {
 
 export type GlobalStatModel = {
   global: GlobalStat;
-  countries: Record<string, CountryStat>;
+  countries: Record<string, CountryStatType>;
   top: TopCountries;
 };

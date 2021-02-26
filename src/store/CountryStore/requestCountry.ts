@@ -7,10 +7,10 @@ import {normalizeCountryApi} from '@Models/Country/CountryApi';
 const requestCountry = async (countryName: string): Promise<ApiResponse<CountryInfo>> => {
     try {
         const response = await axios(apiUrls.country.afterDate(countryName));
-        const data = normalizeCountryApi(response.data);
+
         return <ApiResponse>{
             isError: false,
-            data: data,
+            data: normalizeCountryApi(response.data),
         };
     } catch (e) {
         return {

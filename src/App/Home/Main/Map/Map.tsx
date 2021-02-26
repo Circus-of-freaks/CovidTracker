@@ -6,7 +6,7 @@ import {observer} from 'mobx-react-lite';
 import {Loader} from '@googlemaps/js-api-loader';
 import styles from './Map.module.scss';
 import mapStyles from './MapStyles';
-import GlobalStoreContext from '@components/GlobalStoreContext';
+import GlobalStoreContext from '@Store/GlobalStatStore/GlobalStoreContext';
 import mapLoader from './map-loader.gif';
 import Meta from '@utils/meta';
 

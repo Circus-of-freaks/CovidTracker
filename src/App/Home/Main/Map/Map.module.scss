@@ -6,23 +6,23 @@
   width: -moz-available;
   width: -webkit-fill-available;
   outline: none;
+
+  &__info {
+    color: black;
+  }
+
+  &__infoNumber {
+    color: #B73030;
+    margin-right: 10px;
+  }
+
+  &__infoContainer {
+    display: flex;
+  }
 }
 
 .loader {
   grid-area: map;
   align-self: center;
   justify-self: center;
-}
-
-.map__info {
-  color: black;
-}
-
-.map__infoNumber {
-  color: #B73030;
-  margin-right: 10px;
-}
-
-.map__infoContainer {
-  display: flex;
 }

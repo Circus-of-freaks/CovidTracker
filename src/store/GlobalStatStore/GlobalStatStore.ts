@@ -22,8 +22,6 @@ export default class GlobalStatStore {
           fetch: action.bound,
           data: computed,
       });
-
-      this.fetch();
   }
 
   async fetch(): Promise<void> {

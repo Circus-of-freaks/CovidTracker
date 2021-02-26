@@ -1,4 +1,5 @@
 @import 'src/styles/variables.scss';
+@import 'src/styles/mixins';
 
 .country {
   display: flex;
@@ -13,6 +14,10 @@
 .name {
   color: $gray;
   font-size: $mediumFZ;
+
+  &:hover {
+    @include textHower();
+  }
 }
 
 .info {

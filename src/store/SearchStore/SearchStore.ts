@@ -1,6 +1,6 @@
 import Meta from '@utils/meta';
 import {computed, makeObservable, observable, action} from 'mobx';
-import {CountryStat} from '@Models/GlobalStat/GlobalStatModel';
+import {CountryStatType} from '@Models/GlobalStat/GlobalStatModel';
 
 export default class SearchStore {
     _data: string[] = [];
@@ -9,7 +9,7 @@ export default class SearchStore {
     input: string | undefined = '';
     meta: Meta = Meta.Initial;
     
-    constructor(another: Record<string, CountryStat>) {
+    constructor(another: Record<string, CountryStatType>) {
         makeObservable(this, {
             _data: observable,
             meta: observable,
@@ -22,7 +22,7 @@ export default class SearchStore {
         this.setData(another);
     }
 
-    setData(countries: Record<string, CountryStat>) {
+    setData(countries: Record<string, CountryStatType>) {
         const temp: string[] = [];
         for (const key in countries) {
             this.iso[countries[key].country] = key;

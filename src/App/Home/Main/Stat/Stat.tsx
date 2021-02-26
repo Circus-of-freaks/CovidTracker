@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import StatCard from '@components/StatCard';
 import './Stat.css';
-import GlobalStoreContext from '@components/GlobalStoreContext';
+import GlobalStoreContext from '@Store/GlobalStatStore/GlobalStoreContext';
 import {observer} from 'mobx-react-lite';
 
 export type StatProps = {
@@ -17,12 +17,14 @@ export type StatProps = {
 
 function Stat() {
     const store = useContext(GlobalStoreContext);
+    const globalData = store.data.global || {};
+
     return (
       <div className="stat">
-        <StatCard title="Заражено" number={store.data.global?.totalConfirmed} newCases={store.data.global?.newConfirmed} />
-        <StatCard title="Активно" number={store.data.global?.totalActive} newCases={store.data.global?.newActive} />
-        <StatCard title="Умерло" number={store.data.global?.totalDeaths} newCases={store.data.global?.newDeaths} />
-        <StatCard title="Вылечилось" number={store.data.global?.totalRecovered} newCases={store.data.global?.newRecovered} />
+        <StatCard title="Заражено" number={globalData?.totalConfirmed} newCases={globalData?.newConfirmed} />
+        <StatCard title="Активно" number={globalData?.totalActive} newCases={globalData?.newActive} />
+        <StatCard title="Умерло" number={globalData?.totalDeaths} newCases={globalData?.newDeaths} />
+        <StatCard title="Вылечилось" number={globalData?.totalRecovered} newCases={globalData?.newRecovered} />
       </div>
     );
 }

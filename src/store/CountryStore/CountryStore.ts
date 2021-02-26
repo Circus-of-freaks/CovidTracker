@@ -5,7 +5,7 @@ import {
     observable,
     runInAction,
 } from 'mobx';
-import {CountryModel} from '@Models/Country/CountryModel';
+import { CountryInfo, CountryModel } from '@Models/Country/CountryModel';
 import Meta from '@utils/meta';
 import requestCountry from '@Store/CountryStore/requestCountry';
 
@@ -20,6 +20,9 @@ export default class CountryStore {
             _data: observable,
             meta: observable,
             fetch: action.bound,
+            todayDate: computed,
+            date: computed,
+            dateArray: computed,
             data: computed,
         });
         this.fetch();
@@ -47,5 +50,18 @@ export default class CountryStore {
 
     get data(): CountryModel {
         return this._data;
+    }
+
+    get dateArray(): string[] {
+        return Object.keys(this.data);
+    }
+
+    get date() {
+        const dat = this.dateArray;
+        return dat[this.dateArray.length - 1];
+    }
+
+    get todayDate(): CountryInfo {
+        return this.data[this.date];
     }
 }
