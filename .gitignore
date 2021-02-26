@@ -166,3 +166,4 @@ yarn-error.log*
 .eslintcache
 .idea/
 .idea/*
+dist

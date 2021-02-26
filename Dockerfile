@@ -4,22 +4,21 @@ WORKDIR /code
 
 COPY yarn.lock .
 COPY package.json .
-COPY tsconfig.json .
-COPY tsconfig.paths.json .
-COPY webpack.config.js .
-COPY babel.config.js .
-COPY .eslintrc .
 RUN yarn install
 
 
 COPY public public
 COPY src src
-RUN ls -l
+COPY tsconfig.json .
+COPY tsconfig.paths.json .
+COPY webpack.config.js .
+COPY babel.config.js .
+COPY .eslintrc .
 RUN yarn build
 
 FROM nginx:alpine
 
-COPY --from=frontend_builder /code/build/ /usr/share/nginx/html
+COPY --from=frontend_builder /code/dist/ /usr/share/nginx/html
 ADD nginx.conf /etc/nginx/conf.d/default.conf.template
 COPY docker-entrypoint.sh /
 ENTRYPOINT ["/docker-entrypoint.sh"]
