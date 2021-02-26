@@ -5,7 +5,7 @@ function Header() {
     return (
       <div className={styles.header}>
         <h1>CovidTracker</h1>
-        <p className={styles.description}>Статистика по миру</p>
+        <p className={styles.description}>Global statistics</p>
       </div>
     );
 }

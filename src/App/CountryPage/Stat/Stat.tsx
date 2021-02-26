@@ -17,10 +17,10 @@ function Stat() {
 
     return (
       <div className="stat">
-        <StatCard title="Заражено" number={todayDate?.confirmed}/>
-        <StatCard title="Активно" number={todayDate?.active}/>
-        <StatCard title="Умерло" number={todayDate?.deaths}/>
-        <StatCard title="Вылечилось" number={todayDate?.recovered}/>
+        <StatCard title="Infected" number={todayDate?.confirmed}/>
+        <StatCard title="Active" number={todayDate?.active}/>
+        <StatCard title="Died" number={todayDate?.deaths}/>
+        <StatCard title="Recovered" number={todayDate?.recovered}/>
       </div>
     );
 }

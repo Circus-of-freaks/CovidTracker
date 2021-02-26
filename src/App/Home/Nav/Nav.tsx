@@ -16,9 +16,6 @@ function Nav() {
           <Link to={urls.SEARCH}>
             <div className={styles.search} />
           </Link>
-          <Link to={urls.WARNING}>
-            <div className={styles.warning} />
-          </Link>
         </div>
       </nav>
     );

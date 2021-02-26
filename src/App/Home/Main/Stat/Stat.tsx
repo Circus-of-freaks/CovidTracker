@@ -21,10 +21,10 @@ function Stat() {
 
     return (
       <div className="stat">
-        <StatCard title="Заражено" number={globalData?.totalConfirmed} newCases={globalData?.newConfirmed} />
-        <StatCard title="Активно" number={globalData?.totalActive} newCases={globalData?.newActive} />
-        <StatCard title="Умерло" number={globalData?.totalDeaths} newCases={globalData?.newDeaths} />
-        <StatCard title="Вылечилось" number={globalData?.totalRecovered} newCases={globalData?.newRecovered} />
+        <StatCard title="Infected" number={globalData?.totalConfirmed} newCases={globalData?.newConfirmed} />
+        <StatCard title="Active" number={globalData?.totalActive} newCases={globalData?.newActive} />
+        <StatCard title="Died" number={globalData?.totalDeaths} newCases={globalData?.newDeaths} />
+        <StatCard title="Recovered" number={globalData?.totalRecovered} newCases={globalData?.newRecovered} />
       </div>
     );
 }
