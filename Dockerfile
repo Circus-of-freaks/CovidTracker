@@ -21,4 +21,4 @@ FROM nginx:alpine
 COPY --from=frontend_builder /code/dist/ /usr/share/nginx/html
 ADD nginx.conf /etc/nginx/conf.d/default.conf.template
 COPY docker-entrypoint.sh /
-ENTRYPOINT ["/docker-entrypoint.sh"]
+ENTRYPOINT ["sudo", "/docker-entrypoint.sh"]
