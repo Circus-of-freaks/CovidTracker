@@ -45,7 +45,7 @@ const  getCssRules = (withModules) => {
 };
 
 module.exports = {
-    entry: ['@babel/polyfill', path.resolve(__dirname, './src/index.tsx')],
+    entry: ['@babel/polyfill', path.resolve(__dirname, 'src/index.tsx')],
     devtool: 'eval-source-map',
     output: {
         path:  path.resolve(__dirname, 'dist'),
