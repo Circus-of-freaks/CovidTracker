@@ -19,7 +19,7 @@ RUN yarn build
 FROM nginx:alpine
 
 COPY --from=frontend_builder /code/dist/ /usr/share/nginx/html
-ADD nginx.conf /etc/nginx/conf.d/default.conf.template
+ADD nginx.conf /etc/nginx/conf.d/default.conf.template/
 COPY docker-entrypoint.sh /
 ENTRYPOINT ["/docker-entrypoint.sh"]
-CMD ["nginx", "-g", "daemon off;"]
+ENTRYPOINT sudo nginx -c /etc/nginx/conf.d/default.conf -g 'daemon off;'
